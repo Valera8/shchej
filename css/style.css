@@ -1,0 +1,116 @@
+h1 {
+    color: #5697cf;
+}
+h1:hover {
+    color: #286090;
+}
+.header-a:hover {
+    text-decoration: none;
+}
+/*-----------Article-------------*/
+.article-hi {
+    color: #A94442;
+    font-weight: bold;
+}
+/*-----------End-Article-------------*/
+header .form-inline {
+    text-align: right;
+}
+
+header .form-control {
+    height: 25px;
+}
+
+header .btn {
+    padding: 2px 12px;
+}
+.btn-info a {
+    color: white;
+    text-decoration: none;
+}
+.etxt {
+    text-align: right;
+}
+footer {
+    text-align: center;
+}
+label {
+    width: 100%;
+}
+.form-item {
+    width: 100%;
+}
+.rusakov {
+    min-height: 187px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+.rusakov-img {
+    width: 131px;
+}
+.rusakov-img1 {
+    width: 150px;
+    margin: 8px 0;
+}
+.rusakov-info {
+    padding-top: 40px;
+    font-size: 120%;
+    font-weight: bold;
+    color: #c00;
+}
+.rusakov-info-2 {
+    color: #000;
+    margin: 10px 0;
+}
+ /*-----------Регистрация-------------*/
+ .form-horizontal, .reg-h2 {
+     text-align: center;
+ }
+
+.exit {
+   // display: inline;
+}
+/*-кнопка-регистрация-*/
+.header-link {
+    padding: 4px 12px;
+    color: #fff;
+    background: #31B0D5;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.header-link:hover {
+    background: #286090;
+    color: #fff;
+    text-decoration: none;
+}
+
+ /*-----------End-Регистрация---------*/
+
+/*----Комментарии---------*/
+.section-two input {
+    margin: 10px 0;
+}
+#RformComment input {
+    margin: 10px;
+}
+
+/*-----End-Комментарии--------------*/
+
+@media screen and (max-width: 690px) and (min-width: 320px) {
+    .section-two, .section-one {
+        display: inline-block !important;
+        width: 100% !important;
+        margin: 0 -3px;
+    }
+    .section-one {
+        text-align: left !important;
+    }
+    #tableComment {
+        margin: 10px;
+    }
+    .section-two input {
+        margin: 0;
+    }
+}
