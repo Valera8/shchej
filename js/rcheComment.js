@@ -78,7 +78,7 @@ $(document).ready(function(e){
 			data: dataString,
 			cache: false,
 			success: function(html){
-				$("#RformComment").fadeOut(2000).remove();
+				$("#RformComment").fadeOut(3000).remove();
 				$("#itemComment-" + getvalue).append(html);
 
 			$('#RformComment textarea.tinymce').tinymce({
@@ -175,10 +175,9 @@ $(document).ready(function(e){
 		data: dataString,
 		cache: false,
 		success: function(html){
-			if(html!=='ERR1' && html!=='ERR2' && html!=='ERR3' && html!=='ERR4' && html!=='ERR5') {
-        		   if(RreplyComment !== "" && RreplyComment !== 0 && RreplyComment !== "0" && RreplyComment !== null &&
-				 RreplyComment !== false && typeof RreplyComment !== 'undefined') {
-					$("#RformComment").fadeOut(2000).remove();
+			if(html!=='ERR1' && html!=='ERR2' && html!=='ERR3' && html!=='ERR4' && html!=='ERR5' && html!=='ERR6' && html!=='ERR7') {
+               if(RreplyComment !== "" && RreplyComment !== 0 && RreplyComment !== "0" && RreplyComment !== null && RreplyComment !== false && typeof RreplyComment !== 'undefined') {
+					$("#RformComment").fadeOut(5000).remove();
 					$("#itemComment-" + RreplyComment).append(html);
 					$("#ajaxComment").hide();
 				}
@@ -191,19 +190,21 @@ $(document).ready(function(e){
 					$("#nameComment").focus();
 					$("#ajaxComment").hide();
 					}
-				}
-				else
-				{
-				$("#messComment").html('');
-				$("#messComment").show();
-				$("#ajaxComment").hide();
-				if(html=='ERR1')$("#messComment").append("Ошибка: Имя должно состоять более чем из 3 символов<br/>");
-				if(html=='ERR2')$("#messComment").append("Ошибка: E-Mail указан неверно<br/>");
-				if(html=='ERR3')$("#messComment").append("Ошибка: Отсутствует текст комментария<br/>");
-				if(html=='ERR4')$("#messComment").append("Ошибка: Не удается установить тип комментария. Попробуйте позже");
-				if(html=='ERR5')$("#messComment").append("Ошибка: Не верно указан проверочный код с картинки.");
-				$("#messComment").fadeOut(3000);
-				}
+			}
+			else
+			{
+			$("#messComment").html('');
+			$("#messComment").show();
+			$("#ajaxComment").hide();
+			if(html=='ERR1')$("#messComment").append("Ошибка: Имя должно быть не менее 3 символов<br/>");
+			if(html=='ERR2')$("#messComment").append("Ошибка: E-Mail указан неверно<br/>");
+			if(html=='ERR3')$("#messComment").append("Ошибка: Отсутствует текст комментария<br/>");
+			if(html=='ERR4')$("#messComment").append("Ошибка: Не удается установить тип комментария. Попробуйте позже");
+			if(html=='ERR5')$("#messComment").append("Ошибка: Не верно указан проверочный код с картинки.");
+			if(html=='ERR6')$("#messComment").append("Ошибка: Логин занят. Пожалуйста, авторизуйтесь");
+			if(html=='ERR7')$("#messComment").append("Ошибка: Email занят. Пожалуйста, авторизуйтесь");
+			$("#messComment").fadeOut(5000);
+			}
 			}
 		});
 	}

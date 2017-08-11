@@ -2532,7 +2532,7 @@ select[multiple].input-lg {
   position: absolute;
   top: 25px;
   right: 0;
-  z-index: 2;
+  //z-index: 2;
   display: block;
   width: 34px;
   height: 34px;
@@ -2696,8 +2696,8 @@ select[multiple].input-lg {
   min-height: 27px;
 }
 .form-horizontal .form-group {
-  margin-right: -15px;
-  margin-left: -15px;
+  //margin-right: -15px;
+  //margin-left: -15px;
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {

@@ -1,23 +1,28 @@
 <?php
 include("config.php");
 require_once "models/reg-aut.php";
+require_once ("models/articles.php");
+$link = db_connect();
+//создание переменной
+$articles = articles_all($link);
 session_start();
 ?>
 <!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="Упражнения и задачи по PHP и решения">
-	<meta name="keywords" content="PHP, blog, блог на PHP, задачи, Русаков, Ляпин, курсы, html5, css3, адаптив, мобильные устройства">
-	<title>Блог начинающего программиста</title>
-	<!-- Подключение комментов------------------------------------->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="<?=$article['meta_desc']?>">
+	<meta name="keywords" content="<?=$article['meta_key']?>">
+	<title><?=$article['title']?></title>
+<!-- Подключение комментов-->
 	<script src="../js/jquery-1.4.3.min.js"></script>
-	<!-- Load TinyMCE -->
+<!-- Load TinyMCE -->
 	<script src="../js/tiny_mce/jquery.tinymce.js"></script>
 	<script src="../js/rcheComment.js"></script>
 	<link rel="stylesheet" href="../css/rcheComment.css">
 	<link rel="stylesheet" href="../css/tinymce_content.css"> <!--загрузка стилей внутри textarea-->
-	<!-------------------------------------------------------------->
+<!--end -->
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="../css/ocean.css">
@@ -25,51 +30,104 @@ session_start();
 	<script src="../js/main.js"></script>
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
-
 <body>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-	(function (d, w, c) {
-		(w[c] = w[c] || []).push(function() {
-			try {
-				w.yaCounter40141050 = new Ya.Metrika({
-					id:40141050,
-					clickmap:true,
-					trackLinks:true,
-					accurateTrackBounce:true,
-					webvisor:true
-				});
-			} catch(e) { }
-		});
-
-		var n = d.getElementsByTagName("script")[0],
-			s = d.createElement("script"),
-			f = function () { n.parentNode.insertBefore(s, n); };
-		s.type = "text/javascript";
-		s.async = true;
-		s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-		if (w.opera == "[object Opera]") {
-			d.addEventListener("DOMContentLoaded", f, false);
-		} else { f(); }
-	})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/40141050" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter ------------------->
+	<figure id="circle">ВСЕ СТАТЬИ</figure>
+	<nav>
+		<ul>
+			<?php foreach($articles as $a): ?>
+				<li><a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a></li>
+			<?php endforeach ?>
+		</ul>
+	</nav>
 	<div class="container">
 		<div class="row">
-			<?php
-			include("header.php");
-			?>
+			<header>
+				<a class="header-a" href="../index.php" title="На главную страницу">Блог начинающего программиста</a>
+				<?php if ($_SESSION['reg_success'] == 1): ?> <!--работает только при регистрации-->
+<!--запись в приветствие имени или логина-->
+					<form class="form-horizontal clearfix">
+						<label class="col-sm-4 article-hi">
+							Здравствуйте,
+							<?php if (!empty($_SESSION["name"]))
+							{
+								echo (trim ($_SESSION["name"]));
+								if (!empty($_SESSION["family"]))
+								{
+									echo ' ' . (trim ($_SESSION["family"]));
+								}
+							}
+							elseif (!empty ($_SESSION["family"]))
+							{
+								echo (trim ($_SESSION["family"]));
+							}
+							else
+							{
+								echo (trim ($_SESSION["login"]));
+							}
+							?>!</label>
+						<a class="btn btn-default btn-xs col-sm-1" href="../logout.php" title="Выйти">Выйти</a>
+					</form>
+				<?php else:
+					if (checkUser ($_SESSION['login'], $_SESSION['password'])): ?>
+<!--запись в приветствие имени или логина-->
+						<form class="form-horizontal clearfix">
+							<label class="col-sm-4 article-hi">
+								Здравствуйте,
+								<?php if (!empty($_SESSION["name"]))
+								{
+									echo (trim ($_SESSION["name"]));
+									if (!empty($_SESSION["family"]))
+									{
+										echo ' ' . (trim ($_SESSION["family"]));
+									}
+								}
+								elseif (!empty ($_SESSION["family"]))
+								{
+									echo (trim ($_SESSION["family"]));
+								}
+								else
+								{
+									echo (trim ($_SESSION["login"]));
+								}
+								?>!
+							</label>
+							<a class="btn btn-default btn-xs col-sm-1" href="../logout.php" title="Выйти">Выйти</a>
+						</form>
+					<?php else: ?>
+						<?php if ($_SESSION['error_aut'] == 1): ?>
+							<form class="form-inline">
+								<label class="article-hi col-sm-4">Неверные логин и/или пароль!</label>
+							</form>
+							<? unset ($_SESSION['error_aut']); ?>
+						<? endif ?>
+						<form class="form-inline" action="../login.php" method="post">
+							<div class="form-group">
+								<label class="sr-only" for="login">Логин</label>
+								<input type="text" class="form-control" id="login" name="login" placeholder="Логин">
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="password">Пароль</label>
+								<input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+							</div>
+							<button type="submit" class="btn btn-success">Войти</button>
+							<a class="header-link" href="../models/reg_user.php">Регистрация</a>
+						</form>
+					<?php endif	?>
+				<?php endif ?>
+			</header>
 			<article>
-				<h2>
+				<h1>
 					<?=$article['title']?>
-				</h2>
+				</h1>
 				<em>Опубликовано: <?=$article['date']?></em>
 				<p><?=$article['content']?></p>
 			</article>
-	<!--Реклама_Русаков------------------------------------------------>
+<!--Реклама_Русаков-->
 			<div class="rusakov col-md-6 clearfix">
 				<div class="col-sm-4">
 					<img class="rusakov-img1" src="../images/rusakov-cheap.png" alt="PHP и MySQL с Нуля до Гуру">
@@ -92,36 +150,18 @@ session_start();
 					</p>
 				</div>
 			</div>
-	<!-- Подключение опроса тут нужен JS
-			<div class="clearfix">
-				<h3>Отзывы</h3>
-				<hr>
-				<form action="/php/vote.php" method="get" target="_blank">
-					<input type="Hidden" name=id value=1>
-					<p>Была ли эта статья полезной?
-						<input type="Radio" name=vote value=1 checked>Отлично!
-						<input type="Radio" name=vote value=2>Так себе, потянет...
-						<input type="Radio" name=vote value=3>Ужасно!!!
-						<input type="Submit" value=" Голосовать! ">
-					</p>
-					<p>
-						<a href="/php/vote.php?id=1" target="_blank">Текущие результаты</a>
-				</form>
-			</div>
-	  -->
-
-	 <!------Подключение комментов---------------->
+<!--Подключение комментов-->
 			<div class="clearfix"></div>
 			<div class="tinymce">
 				<?php
-				$comments->outComments();
+					$comments->outComments();
 				?>
 			</div>
 		</div>
 	</div>
 	<footer>
 		<p>Блог начинающего программиста
-			<br>Copyright &copy; 2016 Валерий Егоров. Все права защищены.
+			<br>&copy; Валерий Егоров, 2016 - <?php echo date("Y"); ?>
 		</p>
 	</footer>
 	<script>hljs.initHighlightingOnLoad();</script>

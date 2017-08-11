@@ -7,7 +7,7 @@ class Captcha {
 	const FONT_SIZE = 16;
 	const LET_AMOUNT = 4;
 	const BG_LET_AMOUNT = 30;
-	const FONT = "fonts/verdana.ttf";
+	const FONT = "../fonts/verdana.ttf";
 	
 	private static $letters = array("a", "b", "c", "d", "e", "f", "g");
 	private static $colors = array(90, 110, 130, 150, 170, 190, 210);

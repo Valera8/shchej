@@ -1,12 +1,11 @@
 <?php
 session_start();
-if ($_SESSION['reg_success'])
-{ //âûõîä èç ðåãèñòðàöèè
-	unset ($_SESSION['reg_success']);
-}
-else
-{  //âûõîä èç àâòîðèçàöèè
-	unset ($_SESSION['login']);
-	unset ($_SESSION['password']);
-}
+//Ð²Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
+unset ($_SESSION['reg_success']);
+//Ð²Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
+unset ($_SESSION['login']);
+unset ($_SESSION['password']);
+unset ($_SESSION["name"]);
+unset ($_SESSION["family"]);
+session_destroy();
 header("Location: " . $_SERVER['HTTP_REFERER']);

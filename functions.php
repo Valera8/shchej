@@ -9,16 +9,15 @@
  *    Эл.почта: houseprog@ya.ru
  *
  */
-
-
-function add_pr ($str,$count)
+function add_pr ($str, $count)
 	{
 //	$st=preg_replace("/([.,;-])/","\${".$count."}?",$str);
-	$str=iconv('UTF-8','WINDOWS-1251',$str);
-	$i = 0;$no_pr = 0;$j = 1;
+	$str = iconv('UTF-8', 'WINDOWS-1251', $str);
+	$i = 0; $no_pr = 0; $j = 1;
+	$text = [];
 	while ($i < strlen($str))
 		{
-		$text[$j] = $text[$j].$str[$i];
+		$text[$j] = $text[$j] . $str[$i];
 		if ($str[$i] == ' '){$no_pr = 0;$j = $j+1;}
 		if ($str[$i] != ' '){$no_pr = $no_pr+1;}
 		if ($no_pr == $count){$text[$j] = $text[$j].' ';$no_pr = 0;}
@@ -29,7 +28,7 @@ function add_pr ($str,$count)
 	return $st;
 	}
 
-function PHP_slashes($string,$type='add')
+function PHP_slashes($string, $type='add')
 {
     if ($type == 'add')
     {
@@ -67,9 +66,9 @@ if(!function_exists('utf8_strlen'))
 	}
 
 if(!function_exists('utf8_substr'))
-	{
+{
 	function utf8_substr($s, $offset, $len = 'all')
-		{
+	{
 		if ($offset<0) $offset = utf8_strlen($s) + $offset;
 		if ($len!='all')
 			{
@@ -83,11 +82,11 @@ if(!function_exists('utf8_substr'))
 			preg_match('/^.{' . $offset . '}(.*)/us', $s, $tmp);
 			}
 		return (isset($tmp[1])) ? $tmp[1] : false;
-		}
 	}
+}
 if(!function_exists('utf8_strpos'))
-	{
-function utf8_strpos($str, $needle, $offset = null)
+{
+	function utf8_strpos($str, $needle, $offset = null)
       {
           if (is_null($offset))
           {
@@ -139,17 +138,18 @@ function getOnecache($sql, $time=600,$filename='') {
 		}
         return $cache;
 }
-function email_check($email) {
+function email_check($email)
+{
 	if (!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i",trim($email)))
-		{
-		 return false;
-		}
-		else return true;
-	}
-function isIP($ip) 
 	{
+		 return false;
+	}
+	else return true;
+}
+function isIP($ip) 
+{
 	return (bool)(ip2long($ip)>0);
-	}; 
+};
 function getIP() {
    if(isset($_SERVER['HTTP_X_REAL_IP'])) return $_SERVER['HTTP_X_REAL_IP'];
    return $_SERVER['REMOTE_ADDR'];

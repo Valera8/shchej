@@ -119,7 +119,7 @@ class DB_Engine {
     */
     function connectMySQL($server, $user, $pass, $dbname) {
 
-        $this->link_id= mysql_connect($server, $user, $pass);
+        $this->link_id = mysql_connect($server, $user, $pass);
         if ($this->link_id === false)
             die('Can\'t connect to DB. Server. '.$server.', user: '.$user);
 

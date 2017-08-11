@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Блог начинающего программиста</title>
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
@@ -24,6 +25,14 @@
 				<input type="date" name="date" value="<?=$article['date']?>" class="form-item" autofocus required>
 			</label>
 			<label>
+				Описание
+				<input type="text" name="meta_desc" value="<?=$article['meta_desc']?>" class="form-item" autofocus required>
+			</label>
+			<label>
+				Ключи
+				<input type="text" name="meta_key" value="<?=$article['meta_key']?>" class="form-item" autofocus required>
+			</label>
+			<label>
 				Содержимое
 				<textarea name="content" class="form-item" required><?=$article['content']?></textarea>
 			</label>
@@ -32,7 +41,7 @@
 	</div>
 	<footer>
 		<p>Блог начинающего программиста
-			<br>Copyright &copy; 2016 Валерий Егоров. Все права защищены.
+			<br>&copy; Валерий Егоров, 2016 - <?php echo date("Y"); ?>
 		</p>
 	</footer>
 </div>

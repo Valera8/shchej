@@ -4,7 +4,7 @@
  *    Версия: 1.0 (beta)
  *    Дата: 10.02.2012
  *    Автор: Чернышов Роман
- *    Сайт: http://rche.ru
+ *    Сайт: https://rche.ru/835_kommentarii-na-php-ajax-mysql.html
  *    Эл.почта: houseprog@ya.ru
  *
  */
@@ -29,7 +29,7 @@
 
 
 Для администрирования коммантариев добавте в URL адрес, переменную pass=12345 (пароль задается в config.php)
-Примеры: 
+Примеры:
 	http://example.com/comments.php?pass=12345
 	http://example.com/components/articles/?pass=12345
 	http://example.com/?pass=12345

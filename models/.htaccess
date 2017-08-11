@@ -1,0 +1,22 @@
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+<Files config_class.php>
+  order allow,deny
+  deny from all
+</Files>
+<Files manage_class.php>
+    order allow,deny
+    deny from all
+</Files>
+<Files database_class.php>
+    order allow,deny
+    deny from all
+</Files>
+<Files class.dbsql.php>
+    order allow,deny
+    deny from all
+</Files>
+
+#deny from all

@@ -1,11 +1,11 @@
 /*
  *
- *    Скрипт комментариев.
- *    Версия: 1.0 (beta)
- *    Дата: 10.02.2012
- *    Автор: Чернышов Роман
- *    Сайт: http://rche.ru
- *    Эл.почта: houseprog@ya.ru
+ *    РЎРєСЂРёРїС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+ *    Р’РµСЂСЃРёСЏ: 1.0 (beta)
+ *    Р”Р°С‚Р°: 10.02.2012
+ *    РђРІС‚РѕСЂ: Р§РµСЂРЅС‹С€РѕРІ Р РѕРјР°РЅ
+ *    РЎР°Р№С‚: http://rche.ru
+ *    Р­Р».РїРѕС‡С‚Р°: houseprog@ya.ru
  *
  */
 
@@ -16,7 +16,7 @@
 #rcheComments #allComment {margin:10px;padding-top:6px;position:relative;}
 #rcheComments #allComment .itemComment {position:relative;border-left:1px dotted #CCC;background:#FFF;padding:0 10px 10px 60px;margin:10px 0;}
 #rcheComments #allComment .greyBg {background:#EEE;}
-#rcheComments .avatarComment {position:absolute;left:0;top:0;width:48px;height:48px;padding:2px;border:1px solid #EEE;}
+#rcheComments .avatarComment {position:absolute;left:0;top:0;width:56px;height:56px;padding:2px;border:1px solid #EEE;}
 #rcheComments .panelComment {position:relative;margin:0 0 5px 0;}
 #rcheComments .panelComment a.userComment {color:#0E8BDF;font:14px tahoma, arial;margin:0 10px 0 0;text-decoration:underline;}
 #rcheComments .panelComment .dateComment {color:#333;font:italic 11px tahoma, arial;}
