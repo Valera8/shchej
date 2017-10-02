@@ -1,3 +1,7 @@
+pre {
+    margin-top: 10px;
+}
+
 #circle {
     width: 60px;
     height: 60px;
@@ -88,7 +92,35 @@ article {
 .main-text {
     font-style: italic;
 }
-/*-----------End-Article-------------*/
+/*развернуть/свернуть текст*/
+.slide pre,
+.slide [type="checkbox"]{
+    display:none;
+}
+
+.slide [type="checkbox"]:checked ~ pre {
+    display:block;
+}
+.slide label {
+    color: #428bca;
+}
+.slide label:hover {
+    color: #2a6496;
+    text-decoration: underline;
+}
+    /*-----------End-Article-------------*/
+/*-----------Книга о PHP-------------*/
+
+.lyapin img {
+    margin: 10px;
+}
+.lyapin-right {
+    vertical-align: middle;
+}
+.lyapin-right a {
+    color: black
+}
+/*-----------End-Книга о PHP-------------*/
 
 .btn-info a {
     color: white;
@@ -170,8 +202,53 @@ label {
 footer {
     text-align: center;
 }
+/*страница 40x*/
+.e404 {
+    text-align: center;
+}
+.e404-fig {
+    width: 436px;
+    margin: 0 auto;
+}
+/*.e404 li {*/
+    /*line-height: 27px;*/
+    /*text-align: left;*/
+/*}*/
+.error {
+    font-family: verdana, sans-serif;
+    font-size: 10pt;
+    background-color: #fff;
+}
+.error_b {
+    font-weight: bold;
+}
+.error_b_s {
+    font-size:10px;
+}
+.error table {
+    margin: 0 auto;
+    width: 80%;
+    border: 1px solid gray;
+    text-align: center;
+}
+.error_table {
+    margin: 0 auto;
+    height: 100px;
+    background-color: #808080;
+    border: 0;
+    font-family: tahoma, sans-serif;
+    font-size: 175px;
+    color: #fff;
+}
+.error table .error_table {
+    width: 50%;
+}
+.error_table td {
+    line-height: 1.1;
+}
+/*----End-Страница 40x--------*/
 
-@media screen and (max-width: 690px) and (min-width: 320px) {
+@media screen and (max-width: 690px) and (min-width: 368px) {
     .section-two, .section-one {
         display: inline-block !important;
         width: 100% !important;
@@ -185,5 +262,27 @@ footer {
     }
     .section-two input {
         margin: 0;
+    }
+    .e404-img, .e404-fig {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 367px) and (min-width: 320px) {
+    .section-two, .section-one {
+        display: inline-block !important;
+        width: 100% !important;
+        margin: 0 -3px;
+    }
+    .section-one {
+        text-align: left !important;
+    }
+    #tableComment {
+        margin: 10px;
+    }
+    .section-two input {
+        margin: 0;
+    }
+    figure img, .e404-img, .e404-fig {
+        width: 100%;
     }
 }

@@ -212,3 +212,9 @@
 .defaultSkin span.mce_pagebreak {background-position:0 -40px}
 .defaultSkin span.mce_restoredraft {background-position:-20px -40px}
 .defaultSkin span.mce_spellchecker {background-position:-540px -20px}
+
+/*@media screen and (max-width: 425px) and (min-width: 320px) {*/
+    /*.defaultSkin table.mceLayout {*/
+        /*display: none;*/
+    /*}*/
+/*}*/

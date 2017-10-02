@@ -171,7 +171,7 @@ function identify_modifier_markdown() {
 		'authors' => 'Michel Fortin and John Gruber',
 		'licence' => 'GPL',
 		'version' => MARKDOWNEXTRA_VERSION,
-		'help' => '<a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="http://daringfireball.net/">John Gruber</a>. <a href="http://michelf.com/projects/php-markdown/">More...</a>',
+		'help' => '<a href="https://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="https://daringfireball.net/">John Gruber</a>. <a href="https://michelf.com/projects/php-markdown/">More...</a>',
 		);
 }
 

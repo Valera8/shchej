@@ -3,14 +3,14 @@
 //возвращает все статьи
 function articles_all($link)
 {
-//		Запрос
-	$query = "SELECT * FROM articles ORDER BY id DESC";
+//Запрос
+	$query = "SELECT * FROM rch_articles ORDER BY id DESC";
 	$result = mysqli_query($link, $query);
 
 	if (!$result)
 		die(mysqli_error($link));
 
-//		Извлечение из БД
+//Извлечение из БД
 	$n = mysqli_num_rows($result);
 	$articles = array();
 
@@ -24,8 +24,8 @@ function articles_all($link)
 //возвращает одну статью по указанному адресу
 function articles_get ($link, $id_article)
 {
-//	Запрос
-	$query = sprintf("SELECT * FROM articles WHERE id=%d", (int)$id_article);
+//Запрос
+	$query = sprintf("SELECT * FROM rch_articles WHERE id=%d", (int)$id_article);
 	$result = mysqli_query($link, $query);
 
 	if (!$result)
@@ -37,16 +37,16 @@ function articles_get ($link, $id_article)
 }
 function articles_new ($link, $title, $date, $meta_desc, $meta_key, $content)
 {
-//		Подготовка
+//Подготовка
 	$title = trim($title);
 	$content = trim($content);
 	$meta_desc = trim($meta_desc);
 	$meta_key = trim($meta_key);
-//		Проверка
+//Проверка
 	if ($title == '')
 		return false;
-//		Запрос
-	$t = "INSERT INTO articles (title, date, meta_desc, meta_key, content) VALUES ('%s', '%s', '%s', '%s', '%s')";
+//Запрос
+	$t = "INSERT INTO rch_articles (title, date, meta_desc, meta_key, content) VALUES ('%s', '%s', '%s', '%s', '%s')";
 
 	$query = sprintf($t,
 		mysqli_real_escape_string($link, $title),
@@ -55,7 +55,6 @@ function articles_new ($link, $title, $date, $meta_desc, $meta_key, $content)
 		mysqli_real_escape_string($link, $meta_key),
 		mysqli_real_escape_string($link, $content));
 
-//		echo $query;
 	$result = mysqli_query($link, $query);
 
 	if (!$result)
@@ -80,7 +79,7 @@ function articles_edit ($link, $id, $title, $date, $meta_desc, $meta_key, $conte
 	}
 
 //	Запрос
-	$sql = "UPDATE articles SET title='%s', meta_desc='%s', meta_key='%s', content='%s', date='%s' WHERE  id='%s'";
+	$sql = "UPDATE rch_articles SET title='%s', meta_desc='%s', meta_key='%s', content='%s', date='%s' WHERE  id='%s'";
 
 	$query = sprintf($sql,
 		mysqli_real_escape_string($link, $title),
@@ -100,12 +99,12 @@ function articles_edit ($link, $id, $title, $date, $meta_desc, $meta_key, $conte
 function articles_delete($link, $id)
 {
 	$id = (int)$id;
-	// Проверка
+// Проверка
 	if ($id == 0)
 		return false;
 
-	// Запрос
-	$query = sprintf("DELETE FROM articles WHERE id='%d'", $id);
+// Запрос
+	$query = sprintf("DELETE FROM rch_articles WHERE id='%d'", $id);
 	$result = mysqli_query($link, $query);
 
 	if (!$result)
@@ -113,7 +112,7 @@ function articles_delete($link, $id)
 
 	return mysqli_affected_rows($link);
 }
-function articles_intro($text, $len = 842)
+function articles_intro($text, $len = 300)
 {
-	return (mb_substr($text, 0, $len) . '...');
+	return (mb_substr($text, 0, $len,  'UTF-8') . '...');
 }

@@ -91,7 +91,7 @@ function delComments() {
 
 		if($_GET['noajax']==1):
 		$url=explode('?',$_SERVER['REQUEST_URI']);
-		header('Location: http://'.$_SERVER['HTTP_HOST'].$url[0]);
+		header('Location: https://'.$_SERVER['HTTP_HOST'].$url[0]);
 		else: echo 'OK'; endif;
 	}
 	if(empty($_GET['noajax'])) exit;

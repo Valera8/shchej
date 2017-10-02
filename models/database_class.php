@@ -199,17 +199,17 @@ class DataBase
 //        return $data[0]["COUNT(`id`)"];
 //    }
 /*Последний (максимальный) ID в таблице c икрементом id*/
-//    public function getId ($table_name)
-//    {
-//        $data = $this->select($table_name, array("id"));
-//        $last = array_pop($data);
-//        return $last["id"];
-//    }
-//    public function getLastID ($table_name)
-//    {
-//        $data = $this->select($table_name, array("MAX(`id`)"));
-//        return $data[0]["MAX(`id`)"];
-//    }
+    public function getId ($table_name)
+    {
+        $data = $this->select($table_name, array("id"), $id = 'id');
+        $last = array_pop($data);
+        return $last["id"];
+    }
+    public function getLastID ($table_name)
+    {
+        $data = $this->select($table_name, array("MAX(`id`)"), $order = "id", $id = 'id');
+        return $data[0]["MAX(`id`)"];
+    }
 ///*Максимальное значение у заданного поля в заданной табилице*/
 //    public function getMax ($table_name, $field)
 //    {

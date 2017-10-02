@@ -1,0 +1,8 @@
+AddDefaultCharset UTF-8
+RewriteEngine on
+
+ErrorDocument 404 /404.php
+Options All -Indexes
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP
+RewriteRule ^index\.php$ https://xn--e1ai0c.xn--p1ai/ [R=301,L]
+

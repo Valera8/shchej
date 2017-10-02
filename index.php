@@ -6,8 +6,18 @@
 	$link = db_connect();
 //создание переменной
 	$articles = articles_all($link);
-//подключение шаблона главной страницы блога
+//проверка корректности адресной строки
+if (($_SERVER['REQUEST_URI']) ==  "/index.php" || ($_SERVER['REQUEST_URI']) ==  "/" || ($_SERVER['REQUEST_URI']) ==  "") //подключение шаблона главной страницы блога
+{
 	include ("views/articles.php");
+}
+else
+{
+    header("HTTP/1.0 404 Not Found");
+    include('views/notfound.php');
+    exit;
+}
+
 
 
 

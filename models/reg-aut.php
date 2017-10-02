@@ -4,7 +4,9 @@ require_once ("config_class.php");
 function connectDb()
 {
     $config = new Config();
-	return new mysqli($config->host, $config->user, $config->password, $config->db);
+    $mysqli = new mysqli($config->host, $config->user, $config->password, $config->db);
+    $mysqli->set_charset("utf8");
+    return $mysqli;
 }
 function closeDb($mysqli)
 {

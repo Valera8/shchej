@@ -9,3 +9,4 @@ unset ($_SESSION["name"]);
 unset ($_SESSION["family"]);
 session_destroy();
 header("Location: " . $_SERVER['HTTP_REFERER']);
+exit;

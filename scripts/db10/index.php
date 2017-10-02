@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Галерея фото</title>
+    </head>
+    <body>
+        <h1>Галерея фотографий</h1>
+        <section style="width: 14%; float: left">
+            <h4>Популярные фото</h4>
+            <?php
+            require_once ('function.php');
+            getList ();
+            ?>
+        </section>
+        <section>
+            <?php
+            //вывод изображений
+            $dir = "img_small"; // Путь к директории, в которой лежат малые изображения
+            $files = scandir($dir); // Получаем список файлов из этой директории
+            $files = excess($files); // Удаляем лишние файлы c '.' ...
+            /* Дальше происходит вывод изображений на страницу сайта */
+            for ($i = 0; $i < count($files); $i++)
+            {
+            ?>
+                <!-- Делаем ссылку на страницу с большой картинкой, вывод малых картинок -->
+                <a href="clicks.php?id=<?=$files[$i]?>"><img src="<?=$dir . "/" . $files[$i]?>" alt="Фото галереи" /></a>
+            <?php
+            }
+            ?>
+            <h2>Загрузить фотографию</h2>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <p><input type="file" name="file"></p>
+                <p><input type="submit" name="load" value="Загрузить файл"></p>
+                <br>
+            </form>
+        </section>
+    </body>
+</html>

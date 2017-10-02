@@ -1,5 +1,9 @@
 User-agent: *
-Disallow: /
-Allow: /yandex_1df35c3dfe61ae96.html
+Disallow: /reg_user.php
+Disallow: /scripts/*
+Disallow: /index.php
+Host: https://xn--e1ai0c.xn--p1ai/
+
+Sitemap: https://xn--e1ai0c.xn--p1ai/sitemap.xml
 
 
