@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+</head>
+<body>
+<form action="upload.php" method="post">
+    <fieldset>
+        <legend>Товары</legend>
+            Название товара:
+             <input type="text" name="product_name"><br>
+            Краткое описание товара:
+            <input type="text" name="product_description"><br>
+            Полное описание товара:
+            <input type="text" name="full_description"><br>
+            <input type="submit" name="product" value="Отправить данные">
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>Заказы</legend>
+        Имя заказчика:
+        <input type="text" name="client"><br>
+        email заказчика:
+        <input type="email" name="mail"><br>
+        Номер выбранного товара:
+        <input type="text" name="num"><br>
+        Комментарий:
+        <input type="text" name="comment"><br>
+        <input type="submit" name="ordering" value="Отправить данные">
+    </fieldset>
+</form>
+</body>
+</html>

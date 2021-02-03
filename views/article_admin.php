@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
-<head>
+<head lang="ru">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Блог начинающего программиста</title>
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../css/ocean.css">
-	<script src="../js/highlight.pack.js"></script>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/ocean.css">
+	<script src="/js/highlight.pack.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>

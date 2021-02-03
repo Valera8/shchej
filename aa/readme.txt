@@ -45,7 +45,7 @@
     </label>
         <input type="checkbox" id="slide1"/>
         <pre class="content"><code>
-            ....
+
         </code></pre>
 </div>
 
@@ -238,4 +238,10 @@
     'dbPass' => 'moisey1958',
     'dbHost' => 'mysql.hostinger.ru'
    );
+
+//----17.08.18--Исправления для Гостевой книги--guest_book--Надо внести на хостинг--------------------------//
+views/article.php стр.156 <a>
+views/reg.php стр.114 <a>
+views/articles.php стр.67 <a>
+views/notfound.php стр.47 <a>
 

@@ -1,8 +1,11 @@
 <?php
-	require_once("../database.php");
-	require_once("../models/articles.php");
+	require_once ("../models/articles.php");
+	require_once("../models/database_class.php");
 
-	$link = db_connect();
+	$db = new DataBase();
+	$link = $db->mysqli;
+//создание переменной
+	$articles = articles_all($link);
 
 	if(isset($_GET['action']))
 		$action = $_GET['action'];

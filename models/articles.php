@@ -28,8 +28,7 @@ function articles_get ($link, $id_article)
 	$query = sprintf("SELECT * FROM rch_articles WHERE id=%d", (int)$id_article);
 	$result = mysqli_query($link, $query);
 
-	if (!$result)
-		die(mysqli_error($link));
+	if (!$result) die(mysqli_error($link));
 
 	$article = mysqli_fetch_assoc($result);
 
@@ -115,4 +114,38 @@ function articles_delete($link, $id)
 function articles_intro($text, $len = 300)
 {
 	return (mb_substr($text, 0, $len,  'UTF-8') . '...');
+}
+function  reply()
+{
+	if (!empty($_SESSION["name"]))
+	{
+		echo (trim ($_SESSION["name"]));
+		if (!empty($_SESSION["family"]))
+		{
+			echo ' ' . (trim ($_SESSION["family"]));
+		}
+	}
+	elseif (!empty ($_SESSION["family"]))
+	{
+		echo (trim ($_SESSION["family"]));
+	}
+	else
+	{
+		echo (trim ($_SESSION["login"]));
+	}
+}
+function  replyYa()
+{
+	if (!empty($_SESSION["name_ya"]))
+	{
+		echo ($_SESSION["name_ya"] . '!');
+	}
+	elseif (!empty ($_SESSION["login_ya"]))
+	{
+		echo ($_SESSION["login_ya"] . '!');
+	}
+	if ($_SESSION["avatar_empty"] == false)
+	{
+		echo '<img src="https://avatars.yandex.net/get-yapic/' . $_SESSION["avatar_id"] . '/islands-50" alt="Аватар из Яндекса">';
+	}
 }

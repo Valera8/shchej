@@ -1,0 +1,26 @@
+CREATE TABLE `comments` (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(128) NULL DEFAULT NULL,
+	`email` VARCHAR(128) NULL DEFAULT NULL,
+	`msg` TEXT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
+
+CREATE TABLE `comments_two` (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(128) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`email` VARCHAR(128) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`msg` TEXT NULL COLLATE 'utf8mb4_unicode_ci',
+	`created_at` INT(11) NULL DEFAULT NULL,
+	`updated_at` INT(11) NULL DEFAULT NULL,
+	`status` ENUM('0','1') NULL DEFAULT '0' COLLATE 'utf8mb4_unicode_ci',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;

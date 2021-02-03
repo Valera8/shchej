@@ -4,7 +4,7 @@ require_once "config_class.php";
 class DataBase
 {
     private $config;
-    private $mysqli;/*идентификатор соединения*/
+    public $mysqli;/*идентификатор соединения*/
     public function __construct ()
     {
         $this->config = new Config();
@@ -70,6 +70,91 @@ class DataBase
         $query = substr($query, 0, -1);
         $query .= ")";
         return $this->query($query);
+    }
+    /*Добавлять юзеров в таблицу _users*/
+    public function regUser($family, $name, $login, $email, $password, $photo)
+    {
+        $new_values = ['family'=> $family, 'name' => $name, 'username' => $login, 'email' => $email, 'password' => $password, 'photo' => $photo];
+        $result = $this->insert('users', $new_values );
+        return $result == true;
+    }
+    /*Проверка логина и пароля*/
+    public function checkUser ($login, $password)
+    {
+        if (($login == "") || ($password == ""))
+        {
+            return false;
+        }
+        $result_set = $this->mysqli->query("SELECT password FROM rch_users WHERE username = '$login'");
+        $user = $result_set->fetch_assoc();
+        $real_pass = $user['password'];
+        return $real_pass == $password;
+    }
+    //  Проверка логина на существование в БД
+    public function checkLogin ($login)
+    {
+        $login = $this->mysqli->real_escape_string(trim($_POST['login']));
+        $res = $this->mysqli->query("SELECT username FROM rch_users WHERE username = '$login'");
+        $row = $res->fetch_assoc();
+        $real_log = $row['username'];
+        return $real_log == $login;
+    }
+    //  Проверка email на существование в БД
+    public function checkEmail ($email)
+    {
+        $email = $this->mysqli->real_escape_string(trim($_POST['email']));
+        $res = $this->mysqli->query("SELECT `email` FROM `rch_users` WHERE `email` = '$email'");
+        $row = $res->fetch_assoc();
+        $real_email = $row['email'];
+        return $real_email == $email;
+    }
+    //  Проверка логина на корректность
+    public function validLogin ($login) {
+        if ($this->isContainQuotes($login)) return false;
+        /*Проверяем наличие хотя бы одной буквы*/
+        if (preg_match("/^\d*S/", $login)) return false;
+        return true;
+    }
+    /*Проверяет на наличие в строке кавычек*/
+    private function isContainQuotes($string)
+    {
+        $array = array("\"", "'", "`", "quot;", "&apos;");
+        foreach ($array as $key => $value)
+        {
+            if (strpos($string, $value) !== false) return true;
+        }
+        return false;
+    }
+    //  Проверка email на корректность
+    public function validEmail ($email) {
+        if ($this->isContainQuotes($email)) return false;
+        return true;
+    }
+    /*Проверить на корректность*/
+    public function validText($string)
+    {
+        return $this->validString($string, $this->config->min_text, $this->config->max_text);
+    }
+    /*Проверка на валидность строки*/
+    private function validString($string, $min_length, $max_length)
+    {
+        if (!is_string($string)) return false;
+        if (strlen($string) < $min_length) return false;
+        if (strlen($string) > $max_length) return false;
+        return true;
+    }
+    private function isIntNumber ($number)
+    {
+        if (!is_int($number) && !is_string($number)) return false;
+        if (!preg_match("/^-?(([1-9][0-9]*|0))$/", $number)) return false;
+        return true;
+    }
+    /*Проверка на неотрицательность числа*/
+    public function isNoNegativeInteger($number)
+    {
+        if (!$this->isIntNumber($number)) return false;
+        if ($number < 0) return false;
+        return true;
     }
 /*Обновление записей. $upd_fields - поля, которые обновляем и $where - предикат условия, по которому обновляем*/
 //    private function update($table_name, $upd_fields, $where)
@@ -198,13 +283,13 @@ class DataBase
 //        $data = $this->select($table_name, array("COUNT(`id`)"));
 //        return $data[0]["COUNT(`id`)"];
 //    }
-/*Последний (максимальный) ID в таблице c икрементом id*/
+/*Последний (максимальный) ID в таблице c икрементом id
     public function getId ($table_name)
     {
         $data = $this->select($table_name, array("id"), $id = 'id');
         $last = array_pop($data);
         return $last["id"];
-    }
+    } */
     public function getLastID ($table_name)
     {
         $data = $this->select($table_name, array("MAX(`id`)"), $order = "id", $id = 'id');

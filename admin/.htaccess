@@ -1,6 +1,6 @@
 AuthType Basic
 AuthName "Admin Panel"
-AuthUserFile D:\OpenServer\domains\shchej\admin\.htpasswd
+AuthUserFile D:\OSPanel\domains\shchej\admin\.htpasswd
 Require valid-user
 <Files .htaccess>
     order allow,deny

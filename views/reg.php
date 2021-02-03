@@ -9,11 +9,13 @@ if (($_SERVER['REQUEST_URI']) !=  "/models/reg_user.php")
 }
 session_start();
 $_SESSION['prevPg'] = $_SERVER['HTTP_REFERER'];
-include("../config.php");
+require_once ("../config.php");
 require_once "reg-aut.php";
 require_once ("../models/articles.php");
-require_once ("../database.php");
-$link = db_connect();
+//require_once ("../database.php");
+//$link = db_connect();
+$db = new DataBase();
+$link = $db->mysqli;
 $articles = articles_all($link);
 ?>
 <!doctype html>
@@ -24,10 +26,10 @@ $articles = articles_all($link);
 	<meta name="description" content="Регистрация пользователя на сайте щей.рф для комментирования">
 	<meta name="keywords" content="имя, фамилия, логин, Email, пароль, регистрация">
 	<title>Регистрация на сайте щей.рф</title>
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 <!--	<script src="../js/main.js"></script>-->
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -36,7 +38,7 @@ $articles = articles_all($link);
 </head>
 <body>
 <figure id="circle">ВСЕ СТАТЬИ</figure>
-<nav>
+<nav class="list">
     <ul>
         <?php foreach($articles as $a): ?>
             <li><a href="../article.php?id=<?=$a['id']?>"><?=$a['title']?></a></li>
@@ -98,7 +100,7 @@ $articles = articles_all($link);
 				</div>
 			</div>
 			<input type="hidden" name="photo" value="">
-			<img src="captcha.php" alt="Каптча">
+			<img src="/models/captcha.php" alt="Каптча">
 			<div class="form-group has-success has-feedback <?php if ($_SESSION['error_captcha'] == 1) echo 'has-error'; ?>">
 				<?php if ($_SESSION['error_captcha'] == 1) echo '<p class="article-hi">Введён неправильный код с картинки</p>'; ?>
 				<label for="captcha" class="col-sm-5 control-label">Введите код с картинки:</label>
@@ -109,14 +111,9 @@ $articles = articles_all($link);
 			<button type="submit" class="btn btn-success" name="reg">Регистрация</button>
 		</form>
 	</div>
+	<?php include ("footer.php"); ?>
 </div>
-<footer>
-	<p>Блог начинающего программиста
-		<br>&copy; Валерий Егоров, 2016 - <?php echo date("Y"); ?>
-	</p>
-</footer>
-<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45630489 = new Ya.Metrika({ id:45630489, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45630489" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-<script src="../js/jquery-1.4.3.min.js"></script>
-<script src="../js/main.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

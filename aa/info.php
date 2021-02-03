@@ -48,6 +48,7 @@ else echo "$value: none";
 <a href="https://xn--e1ai0c.xn--p1ai/article.php?id=13">ия</a>
 <a href="scripts\visit9\index.php" target="_blank"></a>
 <a href="//article.php?id=4#files"></a>
+<a href="https://www.ozon.ru/context/detail/id/8465472/?partner=php_blog&from=bar">магазине</a>
 <section></section>
 <figure class="col-md-6">
     <a href="images\cycle_cities_big.jpeg" title="увеличенное изображение">
@@ -55,7 +56,25 @@ else echo "$value: none";
     </a>
     <figcaption>Блок-схема циклов вывода всех городов и областей</figcaption>
 </figure>
+<figure class="col-xs-12">
+    <a href="https://dialogs.yandex.ru/store/skills/664c1ca6-zarabotok-v-internete" title="Открыть навык в новом окне" target="_blank">
+        <img src=" images/skill.jpg" class="img-responsive" alt="Навык Алисы «Заработок в интернете»">
+    </a>
+    <figcaption>Рис. Навык Алисы «Заработок в интернете»</figcaption>
+</figure>
 <a href="images\cycle_cities_big.jpeg" title="увеличенное изображение"><img src="images\cycle_cities_small.jpeg" alt="Циклы городов"></a>
+<ul id="procfile">
+    <li class="cursive"></li>
+    <li><span class="cursive"></span></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 </body>
+<a href="https://www.reg.ru?rlink=reflink-1915611" target="_blank">REG.RU</a>
+<a href="https://www.reg.ru?rlink=reflink-1915611" target=_blank title="Партнёр REG.RU">
+    <img src="/images/comment/regru.svg" alt="партнёр reg.ru">
+</a>
 </html>
 

@@ -13,18 +13,18 @@ require_once ("mail_class.php");
 require_once ("class.controller.php");
 class Comments extends Controller_Base {
 
-	var $path	= ''; // path to page on comments
-	var $table	= 'comments'; // table comments
-	var $prefix	= 'rch_'; // prefix table comments
-	var $event	= '';
-	var $key	= 'e34d9147f42016a32a9bab982492323547e221ce'; // sicret key e34d9147f42016a32a9bab982492323547e121ce
+	public $path	= ''; // path to page on comments
+	public $table	= 'comments'; // table comments
+	public $prefix	= 'rch_'; // prefix table comments
+	public $event	= '';
+	public $key	= 'e34d9147f42016a32a9bab982492323547e221ce'; // sicret key e34d9147f42016a32a9bab982492323547e121ce
 	//for ajax
-	var $login	= false; // login user or email and name
-	var $user	= array(); // user info if login
-	var $admin	= false; // admin option
-	var $gravatar = true; // avatar from gravatar.com
-	var $capcha	= true; // enable Capcha
-	var $paths	= array(); // path's
+	public $login	= false; // login user or email and name
+	public $user	= array(); // user info if login
+	public $admin	= false; // admin option
+	public $gravatar = true; // avatar from gravatar.com
+	public $capcha	= true; // enable Capcha
+	public $paths	= array(); // path's
 
 function index () {
 	$this->event = @$_POST['eventComments'];
@@ -129,7 +129,7 @@ function replyComments() {
 	$urlOpen=$this->getUrl(false, 'open');
     $db = new DataBase();
     $manage = new Manage($db);
-
+/*
 	if($this->capcha)
 	{
 		$capcha = '
@@ -137,12 +137,21 @@ function replyComments() {
 		<img src="../models/captcha.php" alt="картинка ответ" width="120" height="50"/>
 		<br/>';
 	}
-
+*/  if($this->log_ya)
+	{
+		$name_form = $this->log_ya;
+		$email_form = $this->email_ya;
+	}
+	else
+	{
+		$name_form = $_SESSION["login"];
+		$email_form = $manage->getEmail($_SESSION["login"]);
+	}
 	$form = '
 	<form method="post" id="RformComment">
-		Имя: <input name="nameComment" id="nameComment" value="' . $_SESSION["login"] . '" type="text" class="inputComment">
+		Имя: <input name="nameComment" id="nameComment" value="' . $name_form . '" type="text" class="inputComment">
 		<input name="nameCommentCap" id="RnameCommentCap" value="" type="text">
-		Эл. почта: <input name="emailComment" id="emailComment" value="' . $manage->getEmail($_SESSION["login"]) . '" type="text" class="inputComment">
+		Эл. почта: <input name="emailComment" id="emailComment" value="' . $email_form . '" type="text" class="inputComment">
 
 		<input name="replyComment" id="RreplyComment" value="'.$replyid.'" type="hidden">
 		<input name="loginComment" id="RloginComment" value="'.intval($this->login).'" type="hidden">
@@ -153,7 +162,7 @@ function replyComments() {
 		<input name="eventComments" id="ReventComment" value="save" type="hidden">
 		<input name="noAjax" value="1" type="hidden">
 		<textarea name="textComment" id="RtextComment" class="textareaComment tinymce"></textarea>
-		'.$capcha.'
+		'.$this->commentCapcha().'
 		<input value="Ответить" name="submit" type="submit" class="submitComment btn btn-success"/>
 	</form>';
     $_SESSION['replyid'] = $replyid;
@@ -263,11 +272,13 @@ function outItem($item) {
         $autor = false;
 	if(intval($item['user']) == 0)
 	{
-		if($this->gravatar)
+		if(!empty($item['avatar'])) $img = 'https://avatars.yandex.net/get-yapic/' . $item['avatar'] . '/islands-50';/*yandex*/
+		elseif($this->gravatar)
 		{
 			$lowercase = strtolower(trim($item['email']));
 			$image = md5( $lowercase );
 			$img = 'https://www.gravatar.com/avatar/' . $image . '?size=50&default=wavatar';
+
 		}
 		else $img='images/boy48.gif';
 	}
@@ -278,7 +289,7 @@ function outItem($item) {
         $img = '/images/' . $item['user'] . '/48/48/1/' . $im['4']; -для аватарки пока не использ--------- */
         $item['name'] = $item['username'];
 	}
-	if($item['pass'] == $_COOKIE['comment'.$item['id']] and !empty($item['pass']) and ($item['date']+120)>time())           $autor = true;
+	if($item['pass'] == $_COOKIE['comment'.$item['id']] and !empty($item['pass']) and ($item['date']+120)>time()) $autor = true;
 
 	echo $this->itemComments(
 		$item['name'],
@@ -358,7 +369,8 @@ function saveComments() {
 			$error = true;
 			$msg = 2;
 		}
-		$img = 'images/boy48.gif';
+		if ($this->log_ya && !$_SESSION["avatar_empty"]) $img = 'https://avatars.yandex.net/get-yapic/' . $this->avatar_ya . '/islands-50';
+		else $img = 'images/boy48.gif';
 	}
 	else
 	{
@@ -381,9 +393,9 @@ function saveComments() {
 	$time = time();
 	if($cap == 'undefined' || $cap == '') // добавил undefined
 	{
-		$sql = "INSERT INTO {$this->prefix}{$this->table} (`reply`,`user`,`name`,`email`,`comment`,`date`,`url`,`pass`,`urlOpen`)
-			VALUE ('$replyComment','{$this->user['userID']}','$name','$email','$text','$time','$post_url','$pass','$urlOpen')";
-		$this->registry['DB']->execute($sql);
+		$sql = "INSERT INTO {$this->prefix}{$this->table} (`reply`,`user`,`name`,`email`,`comment`,`date`,`url`,`pass`,`urlOpen`,`avatar`)
+			VALUE ('$replyComment','{$this->user['userID']}','$name','$email','$text','$time','$post_url','$pass','$urlOpen','$this->avatar_ya')";
+		$this->registry['DB']->execute($sql); /*Запускает подготовленный запрос на выполнение*/
 	}
 	$lastId = $this->registry['DB']->id;
 	setcookie('comment'.$lastId,$pass,$time+120,'/');
@@ -421,10 +433,56 @@ function formComment($replyid = 0)
 	{
 		$pass_checked = md5($this->user['password'] . $this->key);
 	}
-	else
+	$url = $this->getUrl();
+	$urlOpen=$this->getUrl(false, 'open');
+	/*if($this->capcha) Закомментировал после добавления метода commentCapcha()
+		{
+		$capcha = '
+		<tr>
+			<td class="section-one">Введите код с картинки:<br/>
+				<img src="../models/captcha.php" alt="картинка" width="120" height="50"/>
+			</td>
+			<td class="section-two">
+				<input type="text" name="capcha" id="capcha" value="" class="inputComment"/>
+			</td>
+		</tr>';
+		}
+	*/
+	$form = '<h2 id="newComment">Оставить свой комментарий:</h2>
+	<form method="post" id="formComment">
+		<input name="addComment" id="addComment" value="1" type="hidden">
+		<input name="loginComment" id="loginComment" value="'.intval($this->login).'" type="hidden">
+		<input name="posturlComment" id="posturlComment" value="'.$url.'" type="hidden">
+		<input name="posturlOpenComment" id="posturlOpenComment" value="'.$urlOpen.'" type="hidden">
+		<input name="personaComment" id="personaComment" value="'.@$this->user['userID'].'" type="hidden">
+		<input name="checkedComment" id="checkedComment" value="'.@$pass_checked.'" type="hidden">
+		<input name="eventComments" id="eventComment" value="save" type="hidden">
+		<input name="noAjax" value="1" type="hidden">
+		<table id="tableComment">
+		'.$this->commentName().'
+		<tr>
+			<td class="section-one">Текст комментария:</td>
+			<td class="section-two">
+				<textarea name="textComment" id="textComment" class="textareaComment tinymce"></textarea>
+			</td>
+		</tr>
+		'.$this->commentCapcha().'
+		</table>
+		<input value="Комментировать" name="submit" type="submit" class="submitComment btn btn-success"/>
+	</form>';
+	return $form;
+	}
+
+private function commentName()
+{
+	if(!isset($this->log_ya))
 	{
-		$name='
-		<p><span class="article-hi">Важно! </span>Только у зарегистрированных пользователей имеется защита оригинального имени. Поэтому посторонние пользователи не имеют возможности комментировать от их имени. <a class="header-link" href="models/reg_user.php">Зарегистрироваться</a></p>
+		if($this->login) $name = '';
+		else $name='
+		<p> <!--для хоста адрес без &redirect_uri=http://shchej/yandex.php-->
+		<a href="https://oauth.yandex.ru/authorize?response_type=code&client_id=000de41cfc364b99a9a646567d4cb04d&redirect_uri=http://shchej/yandex.php&state=1"><img class="ya" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>
+		<a class="header-link" href="models/reg_user.php">Зарегистрироваться</a>
+		</p>
 		<tr>
 			<td class="section-one">Имя:</td>
 			<td class="section-two">
@@ -439,10 +497,40 @@ function formComment($replyid = 0)
 			</td>
 		</tr>';
 	}
-	$url = $this->getUrl();
-	$urlOpen=$this->getUrl(false, 'open');
-	if($this->capcha)
+	else $name = '
+		<tr>
+			<td class="section-two">
+				<input name="nameComment" id="nameComment" value="' . $this->log_ya . '" type="hidden">
+				<input name="nameCommentCap" id="nameCommentCap" value="" type="hidden">
+			</td>
+		</tr>
+		<tr>
+			<td class="section-two">
+				<input name="emailComment" id="emailComment" value="' . $this->email_ya . '" type="hidden">
+			</td>
+		</tr>';
+	return $name;
+}
+private function commentCapcha()
+{
+	if(isset($this->log_ya))
+		if($_POST['replyid'])
 		{
+			$capcha = '<input type="hidden" name="capcha" id="Rcapcha" value="' . $_SESSION["rand_code"] . '" class="inputComment"/>';
+		}
+		else
+		{
+			$capcha = '<input type="hidden" name="capcha" id="capcha" value = "' . $_SESSION["rand_code"] . '" class="inputComment"/>';
+		}
+	elseif($this->capcha && $_POST['replyid'])
+	{
+		$capcha = '
+		<br/>Введите код с картинки: <input type="text" name="capcha" id="Rcapcha" value="" class="inputComment"/><br/>
+		<img src="../models/captcha.php" alt="картинка ответ" width="120" height="50"/>
+		<br/>';
+	}
+	elseif($this->capcha)
+	{
 		$capcha = '
 		<tr>
 			<td class="section-one">Введите код с картинки:<br/>
@@ -452,32 +540,10 @@ function formComment($replyid = 0)
 				<input type="text" name="capcha" id="capcha" value="" class="inputComment"/>
 			</td>
 		</tr>';
-		}
-	
-	$form = '<h2 id="newComment">Оставить свой комментарий:</h2>
-	<form method="post" id="formComment">
-		<input name="addComment" id="addComment" value="1" type="hidden">
-		<input name="loginComment" id="loginComment" value="'.intval($this->login).'" type="hidden">
-		<input name="posturlComment" id="posturlComment" value="'.$url.'" type="hidden">
-		<input name="posturlOpenComment" id="posturlOpenComment" value="'.$urlOpen.'" type="hidden">
-		<input name="personaComment" id="personaComment" value="'.@$this->user['userID'].'" type="hidden">
-		<input name="checkedComment" id="checkedComment" value="'.@$pass_checked.'" type="hidden">
-		<input name="eventComments" id="eventComment" value="save" type="hidden">
-		<input name="noAjax" value="1" type="hidden">
-		<table id="tableComment">
-		'.$name.'
-		<tr>
-			<td class="section-one">Текст комментария:</td>
-			<td class="section-two">
-				<textarea name="textComment" id="textComment" class="textareaComment tinymce"></textarea>
-			</td>
-		</tr>
-		'.$capcha.'
-		</table>
-		<input value="Комментировать" name="submit" type="submit" class="submitComment btn btn-success"/>
-	</form>';
-	return $form;
 	}
+	else $capcha = false;
+	return $capcha;
+}
 
 function pageComment() {
 	 //return $out;
@@ -489,6 +555,7 @@ function getUrl($explode=false, $open = '') {
 	   $u=explode('?',$url);
 	   $e=explode('&',$u[1]);
 	   $i=0;
+	   $newQuery = "";
 	   foreach($e as $item)
 		{
 		$i++;

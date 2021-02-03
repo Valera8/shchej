@@ -3,7 +3,7 @@
     $( document ).ready( function() {
         $( '#circle' ).click( function( e ) {
             e.preventDefault();
-            $( 'nav' ).slideToggle(300);
+            $( '.list' ).slideToggle(300);
         });
     });
 })(jQuery);

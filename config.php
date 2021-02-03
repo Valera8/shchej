@@ -13,11 +13,11 @@ require_once ("models/config_class.php");
 
 session_start();
 $config = new Config();
-$DB = new DB_Engine('mysql', $config->host, $config->user, $config->password, $config->db);
+$DB = new DB_Engine('mysql', $config->host, $config->user, $config->password, $config->db);/* библиотека, подключаемая к программам и дающая им функции СУБД. Библиотека позволяет программе использовать определённый формат файлов баз данных для манипулирования данными.*/
 $manage = new Manage($db);
-$registry = new Registry;
+$registry = new Registry;//создаем объект интерфейса ArrayAccess
 
-$registry->set('DB',$DB);
+$registry->set('DB',$DB);/*Устанавливаем по ключу DB объект базы данных $DB */
 
 $comments = new Comments($registry);
 $comments->admin = @($_GET['pass'] == $AdminPass) ? true : false;
@@ -31,6 +31,16 @@ if ($_SESSION['login'] && $_SESSION['password'])
   $comments->user['email'] = $manage->getEmail($_SESSION['login']);
   $comments->user['userID'] = $manage->getId($_SESSION['login']);
   $comments->user['photo'] = $manage->getPhoto($_SESSION['login']);
+}
+elseif ($_SESSION['login_ya']) /*yandex*/
+{
+  //$comments->login = true;
+  $comments->user = []; // массив с данными пользователя
+  $comments->user['username'] = $_SESSION["name_ya"];
+  //$comments->user['password'] = true;
+  $comments->user['email'] = $_SESSION['email_ya'];
+  //$comments->user['userID'] = $manage->getId($_SESSION['login_ya']);
+  //$comments->user['photo'] = $manage->getPhoto($_SESSION['login_ya']);
 }
 else
 {

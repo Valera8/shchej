@@ -1,7 +1,13 @@
 pre {
     margin-top: 10px;
 }
-
+img {
+    max-width: 100%;
+    height: auto;
+}
+figure {
+    margin-bottom: 15px;
+}
 #circle {
     width: 60px;
     height: 60px;
@@ -16,13 +22,13 @@ pre {
     position: fixed;
     right: 0;
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
 }
 #circle:hover {
     border-color: #398439;
     background: #419641;
 }
-nav {
+.list {
     display: none;
     background: #FFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
@@ -35,13 +41,25 @@ nav {
     position: fixed;
     right: 0;
     top: 60px;
-    z-index: 1;
+    //height: 1000px;
+    //overflow-x:auto;
+    z-index: 2;
+
 }
-nav ul {
-    list-style-type: none;
+.list ul {
+    //list-style-type: none;
+    //height:100%;
     padding: 0;
+    //position:static;
+    //display:inline-block;
+}
+.list li {
+    padding-top: 10px;
 }
 /*-----------Header-------------*/
+header {
+    margin-bottom: 15px;
+}
 .header-a, .header-h {
     color: #5697cf;
     font-size: 38px;
@@ -71,6 +89,12 @@ header .form-control {
 header .btn {
     padding: 2px 12px;
 }
+.ya {
+    margin: 16px;
+}
+label img {
+    margin-left: 30px;
+}
 /*-----------End-Header-------------*/
 /*-----------Article-------------*/
 article {
@@ -91,14 +115,15 @@ article {
 }
 .main-text {
     font-style: italic;
+    word-wrap: break-word;
 }
 /*развернуть/свернуть текст*/
-.slide pre,
+.slide pre, .slide nav,
 .slide [type="checkbox"]{
     display:none;
 }
 
-.slide [type="checkbox"]:checked ~ pre {
+.slide [type="checkbox"]:checked ~ pre, .slide [type="checkbox"]:checked ~ nav {
     display:block;
 }
 .slide label {
@@ -108,7 +133,54 @@ article {
     color: #2a6496;
     text-decoration: underline;
 }
+blockquote {
+    border-left: dotted #ff9a38 7px;
+    margin: 40px;
+    padding: 5px 15px 15px;
+    font-size: 14px;
+}
+blockquote cite {
+    display:block;
+    text-align:right;
+    font-weight:bold;
+    color:#172076;
+}
+.article_pre {
+    color: white;
+    background: black;
+    display: inline-block;
+    padding: 4px;
+}
+.art_fig {
+    margin: 15px auto;
+    text-align: center;
+}
+.glowing {
+    background-color: #000;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+.glowing a {
+    color: #314547;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+.glow span{
+    transition: all .3s;
+}
+.glow span:hover{
+    text-shadow: 0 0 10px #06f9fb,
+    0 0 30px #06f9fb,
+    0 0 80px #06f9fb;
+    color: #fff;
+}
     /*-----------End-Article-------------*/
+/*-----РСЯ----*/
+#yandex_rtb_R-A-288816-1 {
+    margin: 15px 0;
+}
+/*-----End-РСЯ----*/
 /*-----------Книга о PHP-------------*/
 
 .lyapin img {
@@ -116,6 +188,7 @@ article {
 }
 .lyapin-right {
     vertical-align: middle;
+    padding-left: 20px;
 }
 .lyapin-right a {
     color: black
@@ -136,11 +209,22 @@ label {
     width: 100%;
 }
 .rusakov {
-    min-height: 187px;
+    min-height: 188px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
+}
+.rusakov-java {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #003;
+    text-align: center;
+}
+.rusakov-java p {
+    font-size: 120%;
+    font-weight: bold;
 }
 .rusakov-img {
     width: 131px;
@@ -163,6 +247,9 @@ label {
  .form-horizontal, .reg-h2 {
      text-align: center;
  }
+ .form-horizontal {
+     margin-bottom: 15px;
+ }
 .reg-p {
     text-align: center;
     font-size: 16px;
@@ -176,6 +263,7 @@ label {
 }
 /*-кнопка-регистрация-*/
 .header-link {
+    margin-right: 16px;
     padding: 4px 12px;
     color: #fff;
     background: #31B0D5;
@@ -199,9 +287,40 @@ label {
 }
 
 /*-----End-Комментарии--------------*/
+/*----------подвал------------------*/
 footer {
-    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+footer figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer figcaption {
+    margin: 0 20px 0 25px;
+}
+footer img {
+    max-width: 71px;
+}
+.morph {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.morph:hover {
+    border-radius: 50%;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+/*-----End-подвал-------------------*/
 /*страница 40x*/
 .e404 {
     text-align: center;
@@ -249,6 +368,9 @@ footer {
 /*----End-Страница 40x--------*/
 
 @media screen and (max-width: 690px) and (min-width: 368px) {
+    .container {
+        margin-left: 5px;
+    }
     .section-two, .section-one {
         display: inline-block !important;
         width: 100% !important;
@@ -268,6 +390,9 @@ footer {
     }
 }
 @media screen and (max-width: 367px) and (min-width: 320px) {
+    .container {
+        margin-left: 5px;
+    }
     .section-two, .section-one {
         display: inline-block !important;
         width: 100% !important;
@@ -285,4 +410,8 @@ footer {
     figure img, .e404-img, .e404-fig {
         width: 100%;
     }
+    label img {
+        margin-left: 12px;
+    }
 }
+

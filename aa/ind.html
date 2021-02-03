@@ -1,0 +1,244 @@
+<!DOCTYPE html>↩
+<html lang="ru">
+<head>↩
+    <meta charset="UTF-8">↩
+    <meta name="viewport" content="width=device-width, initial-scale=1">↩
+    <meta name="description" content="Ознакомиться с исходным кодом навыка Алисы">↩
+    <meta name="keywords" content="исходный код, навык, Алиса, код, исходный, яндекс">↩
+    <title>Исходный код навыка Алисы</title>↩
+    <link rel="stylesheet" href="/css/rcheComment.css">↩
+    <link rel="stylesheet" href="/css/tinymce_content.css"> <!--загрузка стилей внутри textarea-->↩
+    <!--end -->↩
+    <link rel="stylesheet" href="/css/bootstrap.css">↩
+    ↩
+    <link rel="stylesheet" href="/css/ocean.css">↩
+    <link rel="stylesheet" href="/css/style.css">↩
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">↩
+    <!--[if lt IE 9]>↩
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>↩
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>↩
+    <![endif]-->↩
+    <link rel="stylesheet" href="http://shchej/js/tiny_mce/themes/advanced/skins/default/ui.css"><link rel="stylesheet" href="http://shchej/js/tiny_mce/plugins/inlinepopups/skins/clearlooks2/window.css">
+</head>↩
+<body>↩
+<figure id="circle">ВСЕ СТАТЬИ</figure>↩
+<nav class="list">↩
+    <ul>↩
+        <li><a href="article.php?id=21">Исходный код навыка Алисы</a></li>↩
+        <li><a href="article.php?id=20">Как я развернул приложение Алиса с помощью Яндекс.Диалогов и Heroku</a></li>↩
+        <li><a href="article.php?id=19">Профессия программист не нужна?</a></li>↩
+        <li><a href="article.php?id=18">MySQL с PHP</a></li>↩
+        <li><a href="article.php?id=17">Калькулятор</a></li>↩
+        <li><a href="article.php?id=16">Создать фотогалерею</a></li>↩
+        <li><a href="article.php?id=15">Работа с базой данных</a></li>↩
+        <li><a href="article.php?id=14">Рекурсия</a></li>↩
+        <li><a href="article.php?id=13">Книга о PHP</a></li>↩
+        <li><a href="article.php?id=12">Куки</a></li>↩
+        <li><a href="article.php?id=11">Почта</a></li>↩
+        <li><a href="article.php?id=10">Редирект</a></li>↩
+        <li><a href="article.php?id=9">Регулярные выражения</a></li>↩
+        <li><a href="article.php?id=8">Работа с изображениями</a></li>↩
+        <li><a href="article.php?id=7">Установка статического сайта на хостинг Heroku</a></li>↩
+        <li><a href="article.php?id=6">Создание и удаление директорий и файлов</a></li>↩
+        <li><a href="article.php?id=5">Файл ini</a></li>↩
+        <li><a href="article.php?id=4">Работа с файлами</a></li>↩
+        <li><a href="article.php?id=3">Дата и время</a></li>↩
+        <li><a href="article.php?id=2">Массивы</a></li>↩
+    </ul>↩
+</nav>↩
+<div class="container">↩
+    <div class="row">↩
+        <header>↩
+            <a class="header-a" href="/index.php" title="На главную страницу">Блог начинающего программиста</a>↩
+            <form class="form-inline" action="/login.php" method="post"> <!--для хоста адрес без &redirect_uri=http://shchej/yandex.php-->↩
+                <a href="https://oauth.yandex.ru/authorize?response_type=code&amp;client_id=000de41cfc364b99a9a646567d4cb04d&amp;redirect_uri=http://shchej/yandex.php"><img class="ya" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>↩
+                ↩
+                <div class="form-group">↩
+                    <label class="sr-only" for="login">Логин</label>↩
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Логин">↩
+                </div>↩
+                <div class="form-group">↩
+                    <label class="sr-only" for="password">Пароль</label>↩
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">↩
+                </div>↩
+                <button type="submit" class="btn btn-success">Войти</button>↩
+                <a class="header-link" href="/models/reg_user.php">Регистрация</a>↩
+            </form>↩
+        </header>↩
+        <!--Реклама_Хостия↩
+                    <figure class="col-md-12 art_fig">↩
+                        <a target="_blank" href="https://hostia.ru/billing/host.php?uid=50943&bid=30"><img src="/images/hostia8.gif" alt="PHP хостинг ХостиЯ"></a>↩
+                    </figure>↩
+                    -->↩
+        <!--Реклама_Русаков-->↩
+        <div class="rusakov-java col-sm-12 clearfix">↩
+            <a href="https://ktcybr2448.programsite.ru/javaproject" target="_blank"><img class="col-sm-5" src="../images/rusakov-java.png" alt="Создание крупного проекта на Java с Нуля"></a>↩
+            <div class="col-sm-7"><p class="rusakov-info">Создание крупного проекта на Java с нуля</p><p class="rusakov-info-2">Посмотри, как с нуля создаётся сложный проект на Java</p>↩
+                <p><a href="https://ktcybr2448.programsite.ru/javaproject" target="_blank">Получить видеоуроки</a></p>↩
+            </div>↩
+        </div>↩
+        <article>↩
+            <h1>↩
+                Исходный код навыка Алисы				</h1>↩
+            <em>Опубликовано: 2020-11-27</em>↩
+            <div><p>↩
+                На языке программирования PHP создал навык «Монетизация компьютера» для голосового помощника Яндекса. С целью изучения архитектуры MVC и объектно-ориентированного проектирования написал его с использованием этих концепций.↩
+            </p>↩
+                <p>↩
+                    Исходный код навыка выложил в интернет. Начинающим программистам полезно изучать исходный код для ознакомления методологии и техники программирования. Его можно ↩
+                    <a href="https://payment.dawork.ru/" target="_blank"> скачать  </a> ↩
+                    за символическую плату. Сжатая заархивированная папка содержит 251 КБ, 282 объекта. Исходники состоят из 4 директорий и 3 отдельных файлов. Для функционирования навыка используется одна из самых популярных реляционных систем управления базами данных MySQL.↩
+                </p>↩
+                <figure class="col-xs-12 art_fig">↩
+                    <img src="/images/source.svg" alt="Директории и файлы навыка Алисы. Файл svg" title="Материалы исходника">↩
+                    <figcaption><em>Рис</em>. Содержание папки с кодами</figcaption>↩
+                </figure>↩
+                <p>↩
+                    Облегчит понимание исходного кода программы моего навыка моя обширная статья на этом ресурсе о навыке ↩
+                    <a href="/article.php?id=22"> Алисы с использованием PHP, ООП и MVC. </a> ↩
+                    В статье подробно описан навык Алисы, шаблон MVC, использование ООП, порядок загрузки и использования картинок, исходный код.↩
+                </p>↩
+                <p>↩
+                    Голосовой помощник Яндекса Алиса работает на различных устройствах. Для этого у Яндекса создан сервис – платформа диалогов (dialogs.yandex). Удобнее всего пользоваться им на смартфоне. Можно и на компьютере. Алиса сможет разговаривать с вами только после установки на компьютер Яндекс.браузера. Приложение с голосовой активацией помощника Алиса будет запускаться одновременно с пуском системы и работать в фоновом режиме, даже после закрытия браузера.↩
+                </p>↩
+                <p>↩
+                    После входа в мой навык открывается начальный экран с инструкцией его запуска и активной кнопкой «Что ты умеешь».↩
+                </p>↩
+                <figure class="col-xs-12 art_fig">↩
+                    <img src="/images/launch.gif" alt="Активационная фраза для запуска" title="Запуск навыка">↩
+                    <figcaption><em>Рис</em>. Начальный экран программы</figcaption>↩
+                </figure>↩
+                <p>↩
+                    Если нажать на эту кнопку, или произнести голосом её название, будет доступна информация о цели навыка и порядке пользования им.↩
+                </p>↩
+                <p>↩
+                </p><figure class="col-xs-12 art_fig">↩
+                    <img src="/images/goal.gif" alt="Описание цели диалога и порядка действий" title="Цель диалога и инструкция действий открывается на экране и произносится голосом Оксаны">↩
+                    <figcaption><em>Рис</em>. Руководство</figcaption>↩
+                </figure>↩
+                <p></p>↩
+                <div class="glowing">↩
+                    <a href="https://payment.dawork.ru/" target="_blank" class="glow"><span>Посмотреть, </span><span>использовать </span><span>исходный код</span></a>↩
+                </div>↩
+                <br>↩
+                <br>
+            </div>↩
+        </article>↩
+        <!--Реклама_Русаков-->↩
+        <div class="rusakov col-md-6 clearfix">↩
+            <div class="col-sm-4">↩
+                <img class="rusakov-img1" src="/images/geek.png" alt="Кипящий чайник с выхлопом клубов пара из носика">↩
+            </div>↩
+            <div class="rusakov-info col-sm-8">↩
+                <p>Интенсив «Основы программирования»</p>↩
+                <p class="rusakov-info-2">Бесплатный курс по программированию</p>↩
+                <p><a href="https://geekbrains.ru/go/kwSpvt" target="_blank">Начать обучение</a>↩
+                </p>↩
+            </div>↩
+        </div>↩
+        <div class="rusakov col-md-6 clearfix">↩
+            <div class="col-sm-4">↩
+                <img class="rusakov-img" src="/images/rusakov-free.png" alt="Бесплатный курс по основам PHP">↩
+            </div>↩
+            <div class="rusakov-info col-sm-8">↩
+                <p>Бесплатный Видеокурс по PHP!</p>↩
+                <p class="rusakov-info-2">Пример создания PHP-сайта!</p>↩
+                <p><a href="https://ktcybr2448.programsite.ru/freephp" target="_blank">Подробнее</a>↩
+                </p>↩
+            </div>↩
+        </div>↩
+        <!--Подключение комментов-->↩
+        <div class="clearfix"></div>↩
+        <div class="tinymce">↩
+            ↩
+            <div id="rcheComments">↩
+                <h3 class="titleComment">Комментарии</h3>↩
+                <div id="allComment">↩
+                    <p>Пока комментарий нет</p>↩
+                </div>↩
+                <div id="messComment"></div>↩
+                <div id="ajaxComment"></div><h2 id="newComment">Оставить свой комментарий:</h2>↩
+                <form method="post" id="formComment">↩
+                    <input name="addComment" id="addComment" value="1" type="hidden">↩
+                    <input name="loginComment" id="loginComment" value="0" type="hidden">↩
+                    <input name="posturlComment" id="posturlComment" value="cad126f5b5348b260fc4d7b724b2f38d" type="hidden">↩
+                    <input name="posturlOpenComment" id="posturlOpenComment" value="%2Farticle.php%3Fid%3D21" type="hidden">↩
+                    <input name="personaComment" id="personaComment" value="" type="hidden">↩
+                    <input name="checkedComment" id="checkedComment" value="" type="hidden">↩
+                    <input name="eventComments" id="eventComment" value="save" type="hidden">↩
+                    <input name="noAjax" value="1" type="hidden">↩
+                    <p> <!--для хоста адрес без &redirect_uri=http://shchej/yandex.php-->↩
+                        <a href="https://oauth.yandex.ru/authorize?response_type=code&amp;client_id=000de41cfc364b99a9a646567d4cb04d&amp;redirect_uri=http://shchej/yandex.php&amp;state=1"><img class="ya" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>↩
+                        <a class="header-link" href="models/reg_user.php">Зарегистрироваться</a>↩
+                    </p><table id="tableComment">↩
+                        ↩
+                        ↩
+                        <tbody><tr>↩
+                            <td class="section-one">Имя:</td>↩
+                            <td class="section-two">↩
+                                <input name="nameComment" id="nameComment" value="" type="text" class="inputComment">↩
+                                <input name="nameCommentCap" id="nameCommentCap" value="" type="text" class="nameCommentCap">↩
+                            </td>↩
+                        </tr>↩
+                        <tr>↩
+                            <td class="section-one">Электронная почта:</td>↩
+                            <td class="section-two">↩
+                                <input name="emailComment" id="emailComment" value="" type="text" class="inputComment">↩
+                            </td>↩
+                        </tr>↩
+                        <tr>↩
+                            <td class="section-one">Текст комментария:</td>↩
+                            <td class="section-two">↩
+                                <textarea name="textComment" id="textComment" class="textareaComment tinymce" style="display: none;" aria-hidden="true"></textarea><span role="application" aria-labelledby="textComment_voice" id="textComment_parent" class="mceEditor defaultSkin" style="display: none;"><span class="mceVoiceLabel" style="display:none;" id="textComment_voice">{#aria.rich_text_area}</span><table role="presentation" id="textComment_tbl" class="mceLayout" cellspacing="0" cellpadding="0" style=""><tbody><tr role="presentation" class="mceFirst"><td class="mceToolbar mceLeft mceFirst mceLast" role="presentation"><div id="textComment_toolbargroup" role="group" aria-labelledby="textComment_toolbargroup_voice" tabindex="-1"><span role="application"><span id="textComment_toolbargroup_voice" class="mceVoiceLabel" style="display:none;">Toolbar</span><table id="textComment_toolbar1" class="mceToolbar mceToolbarRow1 Enabled" cellpadding="0" cellspacing="0" align="" role="presentation" tabindex="-1" aria-disabled="false" aria-pressed="false"><tbody><tr><td class="mceToolbarStart mceToolbarStartButton mceFirst"><span><!-- IE --></span></td><td style="position: relative"><a role="button" id="textComment_bold" href="javascript:;" class="mceButton mceButtonEnabled mce_bold" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_bold_voice" title="Полужирный (Ctrl+B)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_bold"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_bold_voice">Полужирный (Ctrl+B)</span></a></td><td style="position: relative"><a role="button" id="textComment_italic" href="javascript:;" class="mceButton mceButtonEnabled mce_italic" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_italic_voice" title="Курсив (Ctrl+I)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_italic"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_italic_voice">Курсив (Ctrl+I)</span></a></td><td style="position: relative"><a role="button" id="textComment_underline" href="javascript:;" class="mceButton mceButtonEnabled mce_underline" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_underline_voice" title="Подчеркнутый (Ctrl+U)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_underline"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_underline_voice">Подчеркнутый (Ctrl+U)</span></a></td><td style="position: relative"><a role="button" id="textComment_strikethrough" href="javascript:;" class="mceButton mceButtonEnabled mce_strikethrough" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_strikethrough_voice" title="Зачеркнутый" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_strikethrough"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_strikethrough_voice">Зачеркнутый</span></a></td><td style="position: relative"><span class="mceSeparator" role="separator" aria-orientation="vertical" tabindex="-1"></span></td><td style="position: relative"><a role="button" id="textComment_justifyleft" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyleft" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyleft_voice" title="По левому краю" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyleft"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyleft_voice">По левому краю</span></a></td><td style="position: relative"><a role="button" id="textComment_justifycenter" href="javascript:;" class="mceButton mceButtonEnabled mce_justifycenter" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifycenter_voice" title="По центру" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifycenter"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifycenter_voice">По центру</span></a></td><td style="position: relative"><a role="button" id="textComment_justifyright" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyright" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyright_voice" title="По правому краю" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyright"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyright_voice">По правому краю</span></a></td><td style="position: relative"><a role="button" id="textComment_justifyfull" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyfull" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyfull_voice" title="По ширине" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyfull"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyfull_voice">По ширине</span></a></td><td class="mceToolbarEnd"><span><!-- IE --></span></td><td style="position: relative"><span role="button" aria-haspopup="true" aria-labelledby="textComment_fontselect_text" aria-describedby="textComment_fontselect_voiceDesc"><table role="presentation" tabindex="-1" id="textComment_fontselect" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontselect" aria-valuenow="Шрифт"><tbody><tr><td class="mceFirst"><span id="textComment_fontselect_voiceDesc" class="voiceLabel" style="display:none;">Шрифт</span><a id="textComment_fontselect_text" tabindex="-1" href="javascript:;" class="mceText mceTitle" onclick="return false;" onmousedown="return false;">Шрифт</a></td><td class="mceLast"><a id="textComment_fontselect_open" tabindex="-1" href="javascript:;" class="mceOpen" onclick="return false;" onmousedown="return false;"><span><span style="display:none;" class="mceIconOnly" aria-hidden="true">▼</span></span></a></td></tr></tbody></table></span></td><td style="position: relative"><span role="button" aria-haspopup="true" aria-labelledby="textComment_fontsizeselect_text" aria-describedby="textComment_fontsizeselect_voiceDesc"><table role="presentation" tabindex="-1" id="textComment_fontsizeselect" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontsizeselect" aria-valuenow="Размер"><tbody><tr><td class="mceFirst"><span id="textComment_fontsizeselect_voiceDesc" class="voiceLabel" style="display:none;">Размер</span><a id="textComment_fontsizeselect_text" tabindex="-1" href="javascript:;" class="mceText mceTitle" onclick="return false;" onmousedown="return false;">Размер</a></td><td class="mceLast"><a id="textComment_fontsizeselect_open" tabindex="-1" href="javascript:;" class="mceOpen" onclick="return false;" onmousedown="return false;"><span><span style="display:none;" class="mceIconOnly" aria-hidden="true">▼</span></span></a></td></tr></tbody></table></span></td><td class="mceToolbarEnd mceToolbarEndListBox mceLast"><span><!-- IE --></span></td></tr></tbody></table><table id="textComment_toolbar2" class="mceToolbar mceToolbarRow2 Enabled" cellpadding="0" cellspacing="0" align="" role="presentation" tabindex="-1" aria-disabled="false" aria-pressed="false"><tbody><tr><td class="mceToolbarStart mceToolbarStartButton mceFirst"><span><!-- IE --></span></td><td style="position: relative"><a role="button" id="textComment_cut" href="javascript:;" class="mceButton mceButtonEnabled mce_cut" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_cut_voice" title="Вырезать" tabindex="-1"><span class="mceIcon mce_cut"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_cut_voice">Вырезать</span></a></td><td style="position: relative"><a role="button" id="textComment_copy" href="javascript:;" class="mceButton mceButtonEnabled mce_copy" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_copy_voice" title="Копировать" tabindex="-1"><span class="mceIcon mce_copy"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_copy_voice">Копировать</span></a></td><td style="position: relative"><a role="button" id="textComment_paste" href="javascript:;" class="mceButton mceButtonEnabled mce_paste" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_paste_voice" title="Вставить" tabindex="-1"><span class="mceIcon mce_paste"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_paste_voice">Вставить</span></a></td><td style="position: relative"><a role="button" id="textComment_pastetext" href="javascript:;" class="mceButton mceButtonEnabled mce_pastetext" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_pastetext_voice" title="Вставить как текст" tabindex="-1"><span class="mceIcon mce_pastetext"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_pastetext_voice">Вставить как текст</span></a></td><td style="position: relative"><a role="button" id="textComment_pasteword" href="javascript:;" class="mceButton mceButtonEnabled mce_pasteword" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_pasteword_voice" title="Вставить из Word" tabindex="-1"><span class="mceIcon mce_pasteword"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_pasteword_voice">Вставить из Word</span></a></td><td style="position: relative"><a role="button" id="textComment_emotions" href="javascript:;" class="mceButton mceButtonEnabled mce_emotions" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_emotions_voice" title="Добавить смайл" tabindex="-1"><span class="mceIcon mce_emotions"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_emotions_voice">Добавить смайл</span></a></td><td style="position: relative"><a role="button" id="textComment_image" href="javascript:;" class="mceButton mceButtonEnabled mce_image" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_image_voice" title="Добавить/Изменить изображение" tabindex="-1"><span class="mceIcon mce_image"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_image_voice">Добавить/Изменить изображение</span></a></td><td class="mceToolbarEnd mceToolbarEndButton mceLast"><span><!-- IE --></span></td></tr></tbody></table></span></div><a href="#" accesskey="z" title="Перейти на панель кнопок (Alt+Q). Перейти к редактору (Alt+Z). Перейти к элементу пути (Alt+X)." onfocus="tinyMCE.getInstanceById('textComment').focus();"><!-- IE --></a></td></tr><tr><td class="mceIframeContainer mceFirst mceLast"><iframe id="textComment_ifr" src="javascript:&quot;&quot;" frameborder="0" allowtransparency="true" title="{#aria.rich_text_area}Press ALT-F10 for toolbar. Press ALT-0 for help" style="width: 100px; height: 100px;"></iframe></td></tr><tr class="mceLast"><td class="mceStatusbar mceFirst mceLast"><div id="textComment_path_row" role="group" aria-labelledby="textComment_path_voice" tabindex="-1"><span id="textComment_path_voice">Теги</span><span>: </span></div><a id="textComment_resize" href="javascript:;" onclick="return false;" class="mceResize"></a></td></tr></tbody></table></span><span role="application" aria-labelledby="textComment_voice" id="textComment_parent" class="mceEditor defaultSkin"><span class="mceVoiceLabel" style="display:none;" id="textComment_voice">{#aria.rich_text_area}</span><table role="presentation" id="textComment_tbl" class="mceLayout" cellspacing="0" cellpadding="0" style=""><tbody><tr role="presentation" class="mceFirst"><td class="mceToolbar mceLeft mceFirst mceLast" role="presentation"><div id="textComment_toolbargroup" role="group" aria-labelledby="textComment_toolbargroup_voice" tabindex="-1"><span role="application"><span id="textComment_toolbargroup_voice" class="mceVoiceLabel" style="display:none;">Toolbar</span><table id="textComment_toolbar1" class="mceToolbar mceToolbarRow1 Enabled" cellpadding="0" cellspacing="0" align="" role="presentation" tabindex="-1" aria-disabled="false" aria-pressed="false"><tbody><tr><td class="mceToolbarStart mceToolbarStartButton mceFirst"><span><!-- IE --></span></td><td style="position: relative"><a role="button" id="textComment_bold" href="javascript:;" class="mceButton mceButtonEnabled mce_bold" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_bold_voice" title="Полужирный (Ctrl+B)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_bold"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_bold_voice">Полужирный (Ctrl+B)</span></a></td><td style="position: relative"><a role="button" id="textComment_italic" href="javascript:;" class="mceButton mceButtonEnabled mce_italic" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_italic_voice" title="Курсив (Ctrl+I)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_italic"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_italic_voice">Курсив (Ctrl+I)</span></a></td><td style="position: relative"><a role="button" id="textComment_underline" href="javascript:;" class="mceButton mceButtonEnabled mce_underline" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_underline_voice" title="Подчеркнутый (Ctrl+U)" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_underline"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_underline_voice">Подчеркнутый (Ctrl+U)</span></a></td><td style="position: relative"><a role="button" id="textComment_strikethrough" href="javascript:;" class="mceButton mceButtonEnabled mce_strikethrough" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_strikethrough_voice" title="Зачеркнутый" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_strikethrough"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_strikethrough_voice">Зачеркнутый</span></a></td><td style="position: relative"><span class="mceSeparator" role="separator" aria-orientation="vertical" tabindex="-1"></span></td><td style="position: relative"><a role="button" id="textComment_justifyleft" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyleft" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyleft_voice" title="По левому краю" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyleft"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyleft_voice">По левому краю</span></a></td><td style="position: relative"><a role="button" id="textComment_justifycenter" href="javascript:;" class="mceButton mceButtonEnabled mce_justifycenter" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifycenter_voice" title="По центру" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifycenter"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifycenter_voice">По центру</span></a></td><td style="position: relative"><a role="button" id="textComment_justifyright" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyright" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyright_voice" title="По правому краю" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyright"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyright_voice">По правому краю</span></a></td><td style="position: relative"><a role="button" id="textComment_justifyfull" href="javascript:;" class="mceButton mceButtonEnabled mce_justifyfull" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_justifyfull_voice" title="По ширине" tabindex="-1" aria-pressed="false"><span class="mceIcon mce_justifyfull"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_justifyfull_voice">По ширине</span></a></td><td class="mceToolbarEnd"><span><!-- IE --></span></td><td style="position: relative"><span role="button" aria-haspopup="true" aria-labelledby="textComment_fontselect_text" aria-describedby="textComment_fontselect_voiceDesc"><table role="presentation" tabindex="-1" id="textComment_fontselect" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontselect" aria-valuenow="Шрифт"><tbody><tr><td class="mceFirst"><span id="textComment_fontselect_voiceDesc" class="voiceLabel" style="display:none;">Шрифт</span><a id="textComment_fontselect_text" tabindex="-1" href="javascript:;" class="mceText mceTitle" onclick="return false;" onmousedown="return false;">Шрифт</a></td><td class="mceLast"><a id="textComment_fontselect_open" tabindex="-1" href="javascript:;" class="mceOpen" onclick="return false;" onmousedown="return false;"><span><span style="display:none;" class="mceIconOnly" aria-hidden="true">▼</span></span></a></td></tr></tbody></table></span></td><td style="position: relative"><span role="button" aria-haspopup="true" aria-labelledby="textComment_fontsizeselect_text" aria-describedby="textComment_fontsizeselect_voiceDesc"><table role="presentation" tabindex="-1" id="textComment_fontsizeselect" cellpadding="0" cellspacing="0" class="mceListBox mceListBoxEnabled mce_fontsizeselect" aria-valuenow="Размер"><tbody><tr><td class="mceFirst"><span id="textComment_fontsizeselect_voiceDesc" class="voiceLabel" style="display:none;">Размер</span><a id="textComment_fontsizeselect_text" tabindex="-1" href="javascript:;" class="mceText mceTitle" onclick="return false;" onmousedown="return false;">Размер</a></td><td class="mceLast"><a id="textComment_fontsizeselect_open" tabindex="-1" href="javascript:;" class="mceOpen" onclick="return false;" onmousedown="return false;"><span><span style="display:none;" class="mceIconOnly" aria-hidden="true">▼</span></span></a></td></tr></tbody></table></span></td><td class="mceToolbarEnd mceToolbarEndListBox mceLast"><span><!-- IE --></span></td></tr></tbody></table><table id="textComment_toolbar2" class="mceToolbar mceToolbarRow2 Enabled" cellpadding="0" cellspacing="0" align="" role="presentation" tabindex="-1" aria-disabled="false" aria-pressed="false"><tbody><tr><td class="mceToolbarStart mceToolbarStartButton mceFirst"><span><!-- IE --></span></td><td style="position: relative"><a role="button" id="textComment_cut" href="javascript:;" class="mceButton mceButtonEnabled mce_cut" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_cut_voice" title="Вырезать" tabindex="-1"><span class="mceIcon mce_cut"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_cut_voice">Вырезать</span></a></td><td style="position: relative"><a role="button" id="textComment_copy" href="javascript:;" class="mceButton mceButtonEnabled mce_copy" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_copy_voice" title="Копировать" tabindex="-1"><span class="mceIcon mce_copy"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_copy_voice">Копировать</span></a></td><td style="position: relative"><a role="button" id="textComment_paste" href="javascript:;" class="mceButton mceButtonEnabled mce_paste" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_paste_voice" title="Вставить" tabindex="-1"><span class="mceIcon mce_paste"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_paste_voice">Вставить</span></a></td><td style="position: relative"><a role="button" id="textComment_pastetext" href="javascript:;" class="mceButton mceButtonEnabled mce_pastetext" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_pastetext_voice" title="Вставить как текст" tabindex="-1"><span class="mceIcon mce_pastetext"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_pastetext_voice">Вставить как текст</span></a></td><td style="position: relative"><a role="button" id="textComment_pasteword" href="javascript:;" class="mceButton mceButtonEnabled mce_pasteword" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_pasteword_voice" title="Вставить из Word" tabindex="-1"><span class="mceIcon mce_pasteword"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_pasteword_voice">Вставить из Word</span></a></td><td style="position: relative"><a role="button" id="textComment_emotions" href="javascript:;" class="mceButton mceButtonEnabled mce_emotions" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_emotions_voice" title="Добавить смайл" tabindex="-1"><span class="mceIcon mce_emotions"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_emotions_voice">Добавить смайл</span></a></td><td style="position: relative"><a role="button" id="textComment_image" href="javascript:;" class="mceButton mceButtonEnabled mce_image" onmousedown="return false;" onclick="return false;" aria-labelledby="textComment_image_voice" title="Добавить/Изменить изображение" tabindex="-1"><span class="mceIcon mce_image"></span><span class="mceVoiceLabel mceIconOnly" style="display: none;" id="textComment_image_voice">Добавить/Изменить изображение</span></a></td><td class="mceToolbarEnd mceToolbarEndButton mceLast"><span><!-- IE --></span></td></tr></tbody></table></span></div><a href="#" accesskey="z" title="Перейти на панель кнопок (Alt+Q). Перейти к редактору (Alt+Z). Перейти к элементу пути (Alt+X)." onfocus="tinyMCE.getInstanceById('textComment').focus();"><!-- IE --></a></td></tr><tr><td class="mceIframeContainer mceFirst mceLast"><iframe id="textComment_ifr" src="javascript:&quot;&quot;" frameborder="0" allowtransparency="true" title="{#aria.rich_text_area}Press ALT-F10 for toolbar. Press ALT-0 for help" style="width: 100px; height: 100px;"></iframe></td></tr><tr class="mceLast"><td class="mceStatusbar mceFirst mceLast"><div id="textComment_path_row" role="group" aria-labelledby="textComment_path_voice" tabindex="-1"><span id="textComment_path_voice">Теги</span><span>: </span><span id="textComment_path"><a href="javascript:;" role="button" onmousedown="return false;" class="mcePath_0" id="_mce_item_32" tabindex="-1">p</a></span></div><a id="textComment_resize" href="javascript:;" onclick="return false;" class="mceResize"></a></td></tr></tbody></table></span>↩
+                            </td>↩
+                        </tr>↩
+                        ↩
+                        <tr>↩
+                            <td class="section-one">Введите код с картинки:<br>↩
+                                <img src="../models/captcha.php" alt="картинка" width="120" height="50">↩
+                            </td>↩
+                            <td class="section-two">↩
+                                <input type="text" name="capcha" id="capcha" value="" class="inputComment">↩
+                            </td>↩
+                        </tr>↩
+                        </tbody></table>↩
+                    <input value="Комментировать" name="submit" type="submit" class="submitComment btn btn-success">↩
+                </form>			</div>↩
+        </div>↩
+        <!--Реклама_Хостия-->↩
+        <figure class="col-md-12 art_fig">↩
+            <a target="_blank" href="https://hostia.ru/billing/host.php?uid=50943&amp;bid=30"><img src="/images/hostia.gif" alt="PHP хостинг ХостиЯ"></a>↩
+        </figure>↩
+    </div>↩
+    <footer>↩
+        <img src="/images/ev.png" alt="Логотип ЕВ">↩
+        <figure>↩
+            <figcaption>↩
+                <a href="/index.php" title="Вернуться на главную">Блог начинающего программиста</a>↩
+                <br>© Валерий Егоров, 2016 - 2020        </figcaption>↩
+            <a href="https://feed.dawork.ru/feedback/" title="Переход на сайт feed.dawork.ru для написания сообщения" class="morph">↩
+                <img src="/images/feedback.png" alt="Кнопка обратная связь">↩
+            </a>↩
+        </figure>↩
+    </footer>↩
+    <!-- Yandex.Metrika counter --> <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script type="text/javascript"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(45630489, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45630489" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->	<script src="/js/highlight.pack.js"></script>↩
+    <script src="/js/jquery-1.4.3.min.js"></script>↩
+    <script src="/js/main.js"></script>↩
+    <script>hljs.initHighlightingOnLoad();</script>↩
+    <!-- Подключение комментов-->↩
+    <!-- Load TinyMCE -->↩
+    <script src="/js/tiny_mce/jquery.tinymce.js"></script>↩
+    <script src="/js/rcheComment.js"></script>↩
+    ↩
+    ↩
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+</div>
+<iframe name="ym-native-frame" title="ym-native-frame" frameborder="0" aria-hidden="true" style="opacity: 0 !important; width: 0px !important; height: 0px !important; position: absolute !important; left: 100% !important; bottom: 100% !important; border: 0px !important;">
+
+</iframe>
+<ym-measure class="ym-viewport" style="display: block; inset: 0px; height: 100vh; width: 100vw; position: fixed; transform: translate(0px, -100%); transform-origin: 0px 0px;">
+
+</ym-measure>
+<ym-measure class="ym-zoom" style="bottom: 100%; position: fixed; width: 100vw;"></ym-measure>
+</body>
+</html>

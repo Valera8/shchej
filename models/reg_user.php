@@ -1,7 +1,8 @@
 <?php
 if (isset ($_POST['reg']))
 {
-	require_once "reg-aut.php";
+	//require_once "reg-aut.php";
+	require_once "database_class.php";
 	require_once "captcha_class.php";
 	session_start();
 	$prevPg = $_SESSION['prevPg'];
@@ -21,6 +22,7 @@ if (isset ($_POST['reg']))
 	$password = htmlspecialchars($_POST['password']);
 	$pass2 = htmlspecialchars($_POST['pass2']);
 	$family = htmlspecialchars($_POST['family']);
+	$db = new DataBase();
 	if ($_POST['photo'] == '')
 	{
         $photo = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?size=50&default=wavatar" alt="аватар';
@@ -41,12 +43,12 @@ if (isset ($_POST['reg']))
 		$_SESSION['error_login'] = 1;
 		$bad = true;
 	}
-	if (!validLogin ($login))
+	if (!$db->validLogin ($login))
 	{
 		$_SESSION['error_login'] = 1;
 		$bad = true;
 	}
-	if (checkLogin ($login))
+	if ($db -> checkLogin ($login))
 	{
 		$_SESSION['error_log'] = 1;
 		$bad = true;
@@ -67,12 +69,12 @@ if (isset ($_POST['reg']))
 		$_SESSION['error_email'] = 1;
 		$bad = true;
 	}
-	if (!validEmail ($email))
+	if (!$db->validEmail ($email))
 	{
 		$_SESSION['error_email'] = 1;
 		$bad = true;
 	}
-	if (checkEmail ($email))
+	if ($db->checkEmail ($email))
 	{
 		$_SESSION['error_mail'] = 1;
 		$bad = true;
@@ -84,7 +86,7 @@ if (isset ($_POST['reg']))
 	}
 	if (!$bad)
 	{
-		if (regUser($family, $name, $login, $email, md5($password), $photo))
+		if ($db -> regUser($family, $name, $login, $email, md5($password), $photo))
 		{
 			$_SESSION['reg_success'] = 1;
 			$lastUrl = ($prevPg == 'http://shchej/models/reg_user.php') ? 'http://shchej/' : $prevPg;

@@ -1,9 +1,10 @@
 <?php
 // подключение файлов
-	require_once ("database.php");
+	//require_once ("database.php");
 	require_once ("models/articles.php");
-
-	$link = db_connect();
+	require_once ("models/database_class.php");
+$db = new DataBase();
+$link = $db->mysqli;
 //создание переменной
 	$articles = articles_all($link);
 //проверка корректности адресной строки
@@ -17,7 +18,7 @@ else
     include('views/notfound.php');
     exit;
 }
-
+//изготовление этого блога https://geekbrains.ru/chapters/935
 
 
 

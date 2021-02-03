@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Блог начинающего программиста</title>
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/style.css">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="container">
-	<a href="../index.php"><h1>Блог начинающего программиста</h1></a>
+	<a href="/index.php"><h1>Блог начинающего программиста</h1></a>
 	<div>
 		<a href="index.php?action=add">Добавить статью</a>
 			<table class="table">

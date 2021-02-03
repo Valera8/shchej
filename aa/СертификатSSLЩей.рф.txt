@@ -1,0 +1,12 @@
+
+Getting challenge for xn--e1ai0c.xn--p1ai from acme-server...
+Waiting for domain verification...
+Challenge is valid.
+Generating 4096 bit RSA key for xn--e1ai0c.xn--p1ai...
+openssl genrsa 4096 > "/usr/local/directadmin/data/users/wm50943/domains/xn--e1ai0c.xn--p1ai.key.new"
+Generating RSA private key, 4096 bit long modulus
+..............++
+........++
+e is 65537 (0x10001)
+Checking Certificate Private key match... Match!
+Certificate for xn--e1ai0c.xn--p1ai has been created successfully!

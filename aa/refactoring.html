@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1. class.comments.php ->стр.492 добавил $newQuery = "";
+2. загрузил в images -> картинку login_ya.svg
+3. в models/articles.php -> стр.118 добавил reply() и replyYa();
+
+4. style.css -> стр. 92 добавил .ya; стр.245 добавил в .header-link {
+margin-right: 16px; -> стр. 95 добавил label img; -> стр. 351 и 373 добавил .container; -> стр. 393 добавил label img;
+
+5. создал файл /views/footer.php
+
+6. в /views/articles.php -> стр.75 изменил на <?php include ("footer.php"); ?>; -> стр.76 удалил метрику;
+
+7. в /views/reg.php -> стр.113 изменил на <?php include ("footer.php"); ?> и переместил в другой див (стр.112); -> стр.125 удалил метрику;
+
+8. удалил файл /views/metrika; удалил файл \models\reg-aut.php
+
+9. в models/database_class.php стр.7 изменил на public $mysqli;
+
+10.в index.php -> стр.3 удалил; -> стр.5 добавил require_once ("models/database_class.php"); стр.6 изменил на $db = new DataBase(),$link = $db->mysqli;
+
+11. в views/article.php -> стр.3 и 5 удалил; -> стр.6 добавил $db = new DataBase(),
+$link = $db->mysqli; -> стр.57 исправил $db->checkUser; -> стр.52 и 62 изменил на reply; -> стр.9 добавил $_SESSION['ya'];-> стр. 56 добавил elseif  -> стр. 82 добавил в форму ссылку с картинкой; -> стр.148 изменил на <?php include ("footer.php"); ?>; -> стр.149 удалил метрику; -> стр.
+
+12. в article.php ->стр.2 удалил; ->стр.4 добавил require_once('models/database_class.php'); ->стр.9 добавил $db = new DataBase(), $link = $db->mysqli;
+
+13. в \views\reg.php ->стр.12 изменил на require_once; ->стр.15 и 16 удалил; ->стр.17 добавил $db = new DataBase(), $link = $db->mysqli;
+
+14. в \models\reg-aut.php ->стр.15 удалил regUser и задействовал класс базы данных; ->стр.24 удалил checkUser и задействовал класс базы данных;  ->стр.37 удалил checkLogin и задействовал класс базы данных; ->стр.66 удалил checkEmail и задействовал класс базы данных; ->стр.50 удалил validLogin и задействовал класс базы данных; ->стр.77 удалил validEmail и задействовал класс базы данных; ->стр.82 удалил validText и задействовал класс базы данных и далее validString; ->стр.96 удалил isIntNumber и задействовал класс базы данных и далее isNoNegativeInteger;
+
+15. в \models\reg_user.php ->стр. удалил require_once "reg-aut.php"; ->стр.25 добавил $db = new DataBase(); ->стр.89 исправил $db -> regUser(;  ->стр.51 исправил $db->checkLogin;  ->стр.77 исправил $db->checkEmail;   ->стр.46 исправил $db->validLogin; ->стр.72 исправил $db->validEmail;
+
+16. в \models\database_class.php ->стр.74 добавил метод regUser; ->стр.81 добавил метод checkUser; ->стр.93 добавил метод checkLogin;  ->стр.102 добавил метод checkEmail; ->стр.111 добавил метод validLogin и далее метод isContainQuotes; ->стр.146 добавил метод isIntNumber и далее метод isNoNegativeInteger;
+
+17. в login.php ->стр.2 удалил require_once "models/reg-aut.php";->стр.7 cюда перенес $db; ->стр.23 добавил exit;
+
+18. в \scripts\sql_18\upload_valid.php ->стр.2 удалил require_once ('../../models/reg-aut.php'); ->стр.28 и 64 изменил на $db->validLogin;  ->стр.3 добавил'../../models/database_class.php'; ->стр.64 изменил на $db->validEmail; ->стр.28 и 64 изменил на $db->validText; ->стр.64 изменил на $db->isNoNegativeInteger;
+
+19. в \logout.php ->стр.10 добавил;
+
+20. в \models\class.comments.php  ->стр.417 изменил function formComment($replyid = 0); ->стр.464 добавил private function commentName() и private function commentCapcha();  ->стр.133 закомментировал if($this->capcha);  ->стр.156 $capcha заменил на
+->стр.140 в function replyComments() добавил if($this->ya); ->стр.152 и 154 изменил переменные в инпутах; ->стр.370 в function saveComments добавил if ($this->log_ya && !$_SESSION["avatar_empty"]); ->стр.371 изменил на else;  ->стр.394 измени $sql = "INSERT INTO...; ->стр.275 добавил в if(intval($item['user']) == 0) if(!empty($item['avatar']));  ->стр.276 изменил на elseif...;
+
+21. в \functions.php ->стр.15 добавил $st = '';
+
+22. в \models\class.controller.php ->стр.6 добавил protected $email_ya ...; ->стр.10 добавил $this->$email_ya ...;
+
+23. в \admin\index.php ->стр.2 и 3 заменил require_once ("../models/articles.php"); и require_once("../models/database_class.php"); ->стр.5 заменил $db = new DataBase();...;
+
+24. в \config.php ->стр.35 добавил elseif ($_SESSION['login_ya'])
+
+25. в базе данных ->таблица rch_comments добавил столбец avatar (ALTER TABLE `rch_comments` ADD `avatar` VARCHAR(90) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `urlOpen`;)
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg width="201" height="26" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="203" height="28" id="canvas_background" fill="#fff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_3" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" fill="#fcffff" stroke-width="1.5" x="4.749982" y="0.726563" width="192.25003" height="30.5" id="svg_1"/>
+  <rect stroke="#fcc34d" rx="4" fill="#fcffff" stroke-width="3" x="1.24999" y="0.726565" width="198.250008" height="24.000008" id="svg_2"/>
+  <rect stroke="#fac501" rx="4" fill="#fac501" stroke-width="3" x="1.999988" y="0.726569" width="198.249997" height="24" id="svg_9"/>
+  <path stroke="#f9f9f7" fill="#fffdf9" stroke-width="3" d="m87.73623,3.962921l15.54545,0l12.95455,9.250055l-12.95455,9.250055l-15.54545,0l0,-18.500109z" id="svg_12"/>
+  <rect rx="4" stroke="#f9f9f7" fill="#fffdf9" stroke-width="3" stroke-opacity="null" fill-opacity="null" x="4.999992" y="3.976563" width="83.5" height="18.50001" id="svg_13"/>
+  <text fill="#000000" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="5.749992" y="13.226563" id="svg_14" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" transform="matrix(4.428683118772649,0,0,0.6974627602036338,-3.3406726263374864,12.910831330196165) " stroke="#f9f9f7"/>
+  <text fill="#000000" stroke-width="0" stroke-opacity="null" x="12.49096" y="10.631623" id="svg_15" font-size="24" font-family="Georgia, Times, 'Times New Roman', serif" text-anchor="start" xml:space="preserve" transform="matrix(0.7073857271456693,0,0,0.8832281845368468,26.790127749730342,9.873052641533825) " stroke="#f9f9f7" font-weight="bold">ндекс</text>
+  <text fill="#ff0000" stroke="#f9f9f7" stroke-width="0" stroke-opacity="null" x="17.499992" y="19.726568" id="svg_16" font-size="24" font-family="Georgia, Times, 'Times New Roman', serif" text-anchor="start" xml:space="preserve" font-weight="bold">Я</text>
+  <text fill="#000000" stroke="#f9f9f7" stroke-width="0" stroke-opacity="null" x="143.49917" y="17.976834" id="svg_17" font-size="14" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" font-weight="normal">Войти</text>
+  <path fill="#fcc34d" stroke="#fcc34d" opacity="0.5" d="m85.87672,30.61186" id="svg_21"/>
+ </g>
+</svg>
