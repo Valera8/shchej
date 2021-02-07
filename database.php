@@ -3,6 +3,7 @@
 //define('MYSQL_USER', 'root');     //u484296424_stoma
 //define('MYSQL_PASSWORD', '');       //moisey1958
 //define('MYSQL_DB', 'blog');        //u484296424_blog
+/*!!!!!!!!!!======================================================================
 require_once ("models/config_class.php");
 function db_connect()
 {
@@ -15,3 +16,5 @@ function db_connect()
 	}
 	return $link;
 }
+
+лишний файл остался после Жаворонкова. Теперь ДатаБаз Русакова ===========*/

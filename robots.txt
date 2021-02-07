@@ -1,8 +1,8 @@
 User-agent: *
 Disallow: /reg_user.php
-Disallow: /scripts/*
 Disallow: /index.php
-Host: https://xn--e1ai0c.xn--p1ai/
+Disallow: /scripts/*
+Allow: /scripts/sql_18/table1.php$
 
 Sitemap: https://xn--e1ai0c.xn--p1ai/sitemap.xml
 

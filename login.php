@@ -1,15 +1,14 @@
 <?php
-require_once "models/reg-aut.php";
 require_once "models/database_class.php";
 require_once "models/manage_class.php";
 session_start();
 $login = $_POST['login'];
 $password = md5($_POST['password']);
-if (checkUser($login, $password))
+$db = new DataBase();
+if ($db->checkUser($login, $password))
 {
     $_SESSION['login'] = $login;
     $_SESSION['password'] = $password;
-    $db = new DataBase();
     $manage = new Manage($db);
     $name = $manage->getName($login);
     $family = $manage->getFamily($login);
@@ -21,4 +20,5 @@ else
     $_SESSION['error_aut'] = 1;
 }
 header("Location: " . $_SERVER['HTTP_REFERER']);
+exit;
 

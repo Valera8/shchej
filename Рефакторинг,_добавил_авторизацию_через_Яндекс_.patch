@@ -1,0 +1,185 @@
+Index: aa/y_ent.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- aa/y_ent.html	(revision )
++++ aa/y_ent.html	(revision )
+@@ -0,0 +1,39 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title></title>
++</head>
++<body>
++<form method="post" id="formComment">
++    <input name="addComment" id="addComment" value="1" type="hidden">
++    <input name="loginComment" id="loginComment" value="1" type="hidden">
++    <input name="posturlComment" id="posturlComment" value="dd7e341667a6114015dd8b9602003501" type="hidden">
++    <input name="posturlOpenComment" id="posturlOpenComment" value="%2Farticle.php%3Fid%3D12" type="hidden">
++    <input name="personaComment" id="personaComment" value="3" type="hidden">
++    <input name="checkedComment" id="checkedComment" value="19da5c02febfcb5c067db0ea183c3126" type="hidden">
++    <input name="eventComments" id="eventComment" value="save" type="hidden">
++    <input name="noAjax" value="1" type="hidden">
++
++    <table id="tableComment">
++        <tbody>
++        <tr>
++            <td class="section-one">Текст комментария:</td>
++            <td class="section-two">
++                <textarea name="textComment" id="textComment" class="textareaComment tinymce" style="display: none;" aria-hidden="true"></textarea>
++            </td>
++        </tr>
++
++        <tr>
++            <td class="section-one">Введите код с картинки:<br>
++                <img src="../models/captcha.php" alt="картинка" width="120" height="50">
++            </td>
++            <td class="section-two">
++                <input type="text" name="capcha" id="capcha" value="" class="inputComment">
++            </td>
++        </tr>
++        </tbody></table>
++    <input value="Комментировать" name="submit" type="submit" class="submitComment btn btn-success">
++</form>
++</body>
++</html>
+\ No newline at end of file
+Index: aa/ya.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- aa/ya.html	(revision )
++++ aa/ya.html	(revision )
+@@ -0,0 +1,44 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title></title>
++</head>
++<body>
++<form method="post" id="formComment">
++    <input name="addComment" id="addComment" value="1" type="hidden">
++    <input name="loginComment" id="loginComment" value="1" type="hidden">
++    <input name="posturlComment" id="posturlComment" value="dd7e341667a6114015dd8b9602003501" type="hidden">
++    <input name="posturlOpenComment" id="posturlOpenComment" value="%2Farticle.php%3Fid%3D12" type="hidden">
++    <input name="personaComment" id="personaComment" value="" type="hidden">
++    <input name="checkedComment" id="checkedComment" value="126f3b3350053a62786a8393c04d07f5" type="hidden">
++    <input name="eventComments" id="eventComment" value="save" type="hidden">
++    <input name="noAjax" value="1" type="hidden">
++
++    <table id="tableComment">
++        <tbody>
++        <tr>
++            <td class="section-two">
++                <input name="nameComment" id="nameComment" value="Валерий Егоров" type="text" class="inputComment">
++                <input name="nameCommentCap" id="nameCommentCap" value="1" type="text" class="nameCommentCap">
++            </td>
++        </tr>
++        <tr>
++            <td class="section-two">
++                <input name="emailComment" id="emailComment" value="moisey-58@yandex.ru" type="text" class="inputComment">
++            </td>
++        </tr>
++        <tr>
++            <td class="section-one">Текст комментария:</td>
++            <td class="section-two">
++                <textarea name="textComment" id="textComment" class="textareaComment tinymce" style="display: none;" aria-hidden="true"></textarea>
++          </td>
++        </tr>
++
++
++        </tbody>
++    </table>
++    <input value="Комментировать" name="submit" type="submit" class="submitComment btn btn-success">
++</form>
++</body>
++</html>
+\ No newline at end of file
+Index: yandex.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- yandex.php	(revision )
++++ yandex.php	(revision )
+@@ -0,0 +1,40 @@
++<?php /*авторизация через Яндекс*/
++if (!$_GET['code']) {exit('error code');}
++session_start();
++$curl = curl_init();
++curl_setopt($curl, CURLOPT_URL, 'https://oauth.yandex.ru/token');
++curl_setopt($curl, CURLOPT_POST, 1);
++curl_setopt($curl, CURLOPT_POSTFIELDS, 'grant_type=authorization_code&code='.$_GET['code'].'&client_id=000de41cfc364b99a9a646567d4cb04d&client_secret=0acdf88757dd4a209a3ac0b713833ffd');
++curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
++curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
++$token = json_decode(curl_exec($curl), true);
++curl_close($curl);
++$data = json_decode(file_get_contents('https://login.yandex.ru/info?oauth_token='.$token['access_token']), true);
++/*echo '$data["real_name"] = ' . $data["real_name"] . '<br>';
++echo '$data["emails"][0] = ' . $data["emails"][0] . '<br>';
++echo '$data["login"] = ' . $data["login"] . '<br>';
++echo '$data["default_avatar_id"] = ' . $data["default_avatar_id"] . '<br>';
++echo '<pre>';
++var_dump($data);
++echo '</pre>';
++*/
++$_SESSION["name_ya"] = $data["real_name"];
++$_SESSION['login_ya'] = $data["login"];
++$_SESSION['email_ya'] = $data["emails"][0];
++$_SESSION["avatar_id"] = $data["default_avatar_id"];
++$_SESSION["avatar_empty"] = $data["is_avatar_empty"];
++
++if(isset($_GET['state']))
++{
++    $link = 'http://' . $_SESSION['ya'] . '#newComment';
++}
++else $link = 'http://' . $_SESSION['ya'];
++
++header("Location: $link");
++exit();
++//echo 'X' . $link;
++//$manage = new Manage($db);
++//$manage->redirect($link);
++//echo $_SESSION['login_ya'];
++//echo $_SESSION["name_ya"];
++//http://localhost/
+Index: scripts/calc_17/function.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- scripts/calc_17/function.php	(date 1612371295000)
++++ scripts/calc_17/function.php	(revision )
+@@ -1,0 +1,0 @@
+Index: scripts/sql_18/table2.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- scripts/sql_18/table2.php	(date 1612371295000)
++++ scripts/sql_18/table2.php	(revision )
+@@ -1,0 +1,0 @@
+Index: scripts/sql_18/form.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- scripts/sql_18/form.html	(date 1612371295000)
++++ scripts/sql_18/form.html	(revision )
+@@ -1,0 +1,0 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(date 1612371295000)
++++ .gitignore	(revision )
+@@ -1,3 +1,3 @@
+ yandex_1df35c3dfe61ae96.html
+ .idea
+-/aa
++

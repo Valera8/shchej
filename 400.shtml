@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Ошибка 400 : Ошибка в Запросе!</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body class="error" link=#445588 alink=#445588 vlink=#445588>
+<br><br><br><br>
+<table>
+    <tr><td>Хостинг-провайдер <a href="https://hostia.ru/billing/host.php?uid=50943">ХостиЯ</a></td></tr>
+    <tr><td>
+        <table class="error_table">
+            <tr><td>400</td></tr>
+        </table>
+        <BR>
+    </td></tr>
+    <tr><td class="error_b">400 ОШИБКА В ЗАПРОСЕ<br><br><br>
+        400 error код ошибки в протоколе HTTP, возникающей, когда запрос клиента не может быть понят сервером из-за ошибок в синтаксисе запроса. Клиент не должен повторять запрос без модификации.<br><br><br><br><br><br>
+    </td></tr>
+    <tr><td>Хостинг сайтов
+        <a href="https://hostia.ru/billing/host.php?uid=50943" target=_top>&laquo; ХостиЯ&raquo;</a>
+        © 2007-2017
+    </td></tr>
+</table>
+<br><br>
+</body>
+</html>

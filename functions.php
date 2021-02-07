@@ -12,6 +12,7 @@
 function add_pr ($str, $count)
 	{
 //	$st=preg_replace("/([.,;-])/","\${".$count."}?",$str);
+	$st = '';
 	$str = iconv('UTF-8', 'WINDOWS-1251', $str);
 	$i = 0; $no_pr = 0; $j = 1;
 	$text = [];
@@ -23,7 +24,7 @@ function add_pr ($str, $count)
 		if ($no_pr == $count){$text[$j] = $text[$j].' ';$no_pr = 0;}
 		$i = $i+1;
 		}
-	while ($j != 0){$st = $st.$text[$j];$j = $j-1;}
+	while ($j != 0){$st = $st . $text[$j];$j = $j-1;}
 	$st=iconv('WINDOWS-1251','UTF-8',$st);
 	return $st;
 	}
