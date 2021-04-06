@@ -244,4 +244,7 @@ views/article.php стр.156 <a>
 views/reg.php стр.114 <a>
 views/articles.php стр.67 <a>
 views/notfound.php стр.47 <a>
+//------- ---------- -------------- ------------------ ----------------- //
+Превращаем HTML-код в текст
+http://iguanadreams.com/tools/html2text.html
 

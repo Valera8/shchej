@@ -36,7 +36,7 @@ $_SESSION['ya'] = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	<nav class="list">
 		<ul>
 			<?php foreach($articles as $a): ?>
-				<li><a href="article.php?id=<?=$a['id']?>"><?=$a['title']?></a></li>
+				<li><a href="/article.php?id=<?=$a['id']?>"><?=$a['title']?></a></li>
 			<?php endforeach ?>
 		</ul>
 	</nav>
@@ -80,7 +80,7 @@ $_SESSION['ya'] = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 							<? unset ($_SESSION['error_aut']); ?>
 						<? endif ?>
 						<form class="form-inline" action="/login.php" method="post"> <!--для хоста адрес без &redirect_uri=http://shchej/yandex.php-->
-							<a href="https://oauth.yandex.ru/authorize?response_type=code&client_id=000de41cfc364b99a9a646567d4cb04d&redirect_uri=http://shchej/yandex.php"><img class="ya" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>
+							<a href="https://oauth.yandex.ru/authorize?response_type=code&client_id=000de41cfc364b99a9a646567d4cb04d&redirect_uri=http://shchej/yandex.php"><img class="ya" id="oauth" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>
 
 							<div class="form-group">
 								<label class="sr-only" for="login">Логин</label>

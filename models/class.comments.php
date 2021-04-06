@@ -391,7 +391,7 @@ function saveComments() {
 	$pass = $this->generate_password(8);
 	$date = $this->get_Date();
 	$time = time();
-	if($cap == 'undefined' || $cap == '') // добавил undefined
+	if($cap == 'undefined' || $cap == '') // добавил undefined удалил $cap == 'undefined' || $cap == '' поставил $this->path==='!'
 	{
 		$sql = "INSERT INTO {$this->prefix}{$this->table} (`reply`,`user`,`name`,`email`,`comment`,`date`,`url`,`pass`,`urlOpen`,`avatar`)
 			VALUE ('$replyComment','{$this->user['userID']}','$name','$email','$text','$time','$post_url','$pass','$urlOpen','$this->avatar_ya')";
@@ -481,7 +481,7 @@ private function commentName()
 		else $name='
 		<p> <!--для хоста адрес без &redirect_uri=http://shchej/yandex.php-->
 		<a href="https://oauth.yandex.ru/authorize?response_type=code&client_id=000de41cfc364b99a9a646567d4cb04d&redirect_uri=http://shchej/yandex.php&state=1"><img class="ya" src="/images/login_ya.svg" alt="Кнопка войти через Яндекс"></a>
-		<a class="header-link" href="models/reg_user.php">Зарегистрироваться</a>
+		<a class="header-link" href="/models/reg_user.php">Зарегистрироваться</a>
 		</p>
 		<tr>
 			<td class="section-one">Имя:</td>

@@ -10,7 +10,7 @@ if (($_SERVER['REQUEST_URI']) !=  "/models/reg_user.php")
 session_start();
 $_SESSION['prevPg'] = $_SERVER['HTTP_REFERER'];
 require_once ("../config.php");
-require_once "reg-aut.php";
+//require_once "reg-aut.php";
 require_once ("../models/articles.php");
 //require_once ("../database.php");
 //$link = db_connect();

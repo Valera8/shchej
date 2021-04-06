@@ -1,8 +1,10 @@
 <?php
-require_once "/models/reg-aut.php";
+//require_once "/models/reg-aut.php";
 require_once ("/models/articles.php");
-require_once ("/database.php");
-$link = db_connect();
+//require_once ("/database.php");
+//$link = db_connect();
+$db = new DataBase();
+$link = $db->mysqli;
 $articles = articles_all($link);
 ?>
 <!doctype html>

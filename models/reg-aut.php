@@ -1,6 +1,6 @@
 <?php
 require_once ("config_class.php");
-/*рассылка РусаковАвторизация Этот файл больше не использутся с 02.08.2020*/
+/*рассылка РусаковАвторизация*/
 function connectDb()
 {
     $config = new Config();
@@ -12,7 +12,6 @@ function closeDb($mysqli)
 {
 	$mysqli->close();
 }
-/*
 function regUser($family, $name, $login, $email, $password, $photo)
 {
 	$mysqli = connectDb();
@@ -20,7 +19,6 @@ function regUser($family, $name, $login, $email, $password, $photo)
 	closeDb($mysqli);
     return $result == true;
 }
-
 function checkUser ($login, $password)
 {
 	if (($login == "") || ($password == ""))
@@ -45,15 +43,14 @@ function checkLogin ($login)
 	closeDb($mysqli);
 	return $real_log == $login;
 }
-
 //  Проверка логина на корректность
 function validLogin ($login) {
 	if (isContainQuotes($login)) return false;
-	/*Проверяем наличие хотя бы одной буквы
+	/*Проверяем наличие хотя бы одной буквы*/
 	if (preg_match("/^\d*S/", $login)) return false;
     return true;
 }
-/*Проверяет на наличие в строке кавычек
+/*Проверяет на наличие в строке кавычек*/
 function isContainQuotes($string)
 {
 	$array = array("\"", "'", "`", "quot;", "&apos;");
@@ -63,7 +60,7 @@ function isContainQuotes($string)
 	}
 	return false;
 }
-/*  Проверка email на существование в БД
+//  Проверка email на существование в БД
 function checkEmail ($email)
 {
 	$mysqli = connectDb();
@@ -82,10 +79,10 @@ function validEmail ($email) {
 function validText($string)
 {
 	$config = new Config();
-	/*Проверить на корректность
+	/*Проверить на корректность*/
 	return validString($string, $config->min_text, $config->max_text);
 }
-/*Проверка на валидность строки
+/*Проверка на валидность строки*/
 function validString($string, $min_length, $max_length)
 {
 	if (!is_string($string)) return false;
@@ -98,11 +95,13 @@ function isIntNumber ($number)
 	if (!is_int($number) && !is_string($number)) return false;
 	if (!preg_match("/^-?(([1-9][0-9]*|0))$/", $number)) return false;
 	return true;
-}*/
-/*Проверка на неотрицательность числа
+}
+/*Проверка на неотрицательность числа*/
 function isNoNegativeInteger($number)
 {
 	if (!isIntNumber($number)) return false;
 	if ($number < 0) return false;
 	return true;
-}*/
+}
+
+

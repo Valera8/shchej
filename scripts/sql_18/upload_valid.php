@@ -88,7 +88,6 @@ else
 $mysqli->close();
 header("Location: {$_SERVER['HTTP_REFERER']}");
 exit;
-?>
 
 
  
