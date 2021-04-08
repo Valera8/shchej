@@ -21,7 +21,7 @@
  * @author: Vladimir Romanovich <ibnteo@gmail.com>
  */
 
-
+//тест роваып выаоыждв
 function markhtml($text, $xhtml = false) {
 
     // MarkHtml
