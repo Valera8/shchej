@@ -48,3 +48,10 @@ exit();
 //echo $_SESSION['login_ya'];
 //echo $_SESSION["name_ya"];
 //http://localhost/
+
+//echo 'X' . $link;
+//$manage = new Manage($db);
+//$manage->redirect($link);
+//echo $_SESSION['login_ya'];
+//echo $_SESSION["name_ya"];
+//http://localhost/
